@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton_flutter/domain/entities/movie.dart';
-import 'package:ditonton_flutter/domain/entities/movie_detail.dart';
+import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
+import 'package:ditonton_flutter/domain/entities/movies/movie_detail.dart';
 import 'package:ditonton_flutter/common/failure.dart';
 
 abstract class MovieRepository {

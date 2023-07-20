@@ -1,0 +1,29 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/path.jpg",
+      "id": 88040,
+      "name": "Name",
+      "original_language": "ja",
+      "original_name": "Original Name",
+      "overview": "Overview",
+      "poster_path": "/path.jpg",
+      "media_type": "tv",
+      "genre_ids": [
+        16,
+        18
+      ],
+      "popularity": 19.197,
+      "first_air_date": "2019-07-12",
+      "vote_average": 8.575,
+      "vote_count": 696,
+      "origin_country": [
+        "JP"
+      ]
+    }
+  ],
+  "total_pages": 2,
+  "total_results": 40
+}
