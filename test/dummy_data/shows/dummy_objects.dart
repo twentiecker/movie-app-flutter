@@ -6,6 +6,7 @@ import 'package:ditonton_flutter/domain/entities/movies/movie_detail.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show_detail.dart';
 
+// movies
 final testMovie = Movie(
   adult: false,
   backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
@@ -61,7 +62,7 @@ final testMovieMap = {
   'title': 'title',
 };
 
-/// shows
+// shows
 final testShow = Show(
   backdropPath: "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
   firstAirDate: "1952-12-26",

@@ -1,3 +1,5 @@
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_search_bloc.dart';
 import 'package:ditonton_flutter/presentation/pages/about_page.dart';
 import 'package:ditonton_flutter/presentation/pages/movies/home_movie_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/home_show_page.dart';
@@ -25,6 +27,7 @@ import 'package:ditonton_flutter/presentation/provider/movies/watchlist_movie_no
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ditonton_flutter/injection.dart' as di;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'common/constants.dart';
@@ -77,6 +80,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistShowNotifier>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieSearchBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ShowSearchBloc>(),
         ),
       ],
       child: MaterialApp(

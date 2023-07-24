@@ -27,6 +27,8 @@ import 'package:ditonton_flutter/domain/usecases/shows/get_watchlist_shows.dart'
 import 'package:ditonton_flutter/domain/usecases/shows/remove_watchlist_show.dart';
 import 'package:ditonton_flutter/domain/usecases/shows/save_watchlist_show.dart';
 import 'package:ditonton_flutter/domain/usecases/shows/search_shows.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_search_bloc.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_list_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_search_notifier.dart';
@@ -45,6 +47,18 @@ import 'package:get_it/get_it.dart';
 final locator = GetIt.instance;
 
 void init() {
+  // bloc
+  locator.registerFactory(
+    () => MovieSearchBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => ShowSearchBloc(
+      locator(),
+    ),
+  );
+
   // provider
   locator.registerFactory(
     () => MovieListNotifier(
