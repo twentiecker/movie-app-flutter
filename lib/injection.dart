@@ -130,7 +130,6 @@ void init() {
   locator.registerLazySingleton(() => SaveWatchlist(locator()));
   locator.registerLazySingleton(() => RemoveWatchlist(locator()));
   locator.registerLazySingleton(() => GetWatchlistMovies(locator()));
-
   locator.registerLazySingleton(() => GetAiringTodayShows(locator()));
   locator.registerLazySingleton(() => GetPopularShows(locator()));
   locator.registerLazySingleton(() => GetTopRatedShows(locator()));
@@ -157,12 +156,10 @@ void init() {
   );
 
   // data sources
-  /// movies
   locator.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(
       () => MovieLocalDataSourceImpl(databaseHelper: locator()));
-  /// shows
   locator.registerLazySingleton<ShowRemoteDataSource>(
       () => ShowRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<ShowLocalDataSource>(

@@ -1,4 +1,3 @@
-import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:equatable/equatable.dart';
 

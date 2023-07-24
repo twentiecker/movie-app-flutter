@@ -1,6 +1,5 @@
 import 'package:ditonton_flutter/common/exception.dart';
 import 'package:ditonton_flutter/data/datasources/db/database_helper.dart';
-import 'package:ditonton_flutter/data/models/movies/movie_table.dart';
 import 'package:ditonton_flutter/data/models/shows/show_table.dart';
 
 abstract class ShowLocalDataSource {

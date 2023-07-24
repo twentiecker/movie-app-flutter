@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton_flutter/common/constants.dart';
-import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/show_detail_page.dart';
 import 'package:flutter/material.dart';

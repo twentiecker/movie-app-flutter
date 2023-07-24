@@ -1,4 +1,3 @@
-import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:ditonton_flutter/domain/usecases/shows/get_airing_today_shows.dart';

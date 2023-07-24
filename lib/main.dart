@@ -8,9 +8,7 @@ import 'package:ditonton_flutter/presentation/pages/shows/popular_shows_page.dar
 import 'package:ditonton_flutter/presentation/pages/shows/search_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/show_detail_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/top_rated_shows_page.dart';
-import 'package:ditonton_flutter/presentation/pages/shows/watchlist_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/movies/top_rated_movies_page.dart';
-import 'package:ditonton_flutter/presentation/pages/movies/watchlist_movies_page.dart';
 import 'package:ditonton_flutter/presentation/pages/watchlist_page.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_list_notifier.dart';
@@ -40,7 +38,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -63,8 +60,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
-
-        /// shows
         ChangeNotifierProvider(
           create: (_) => di.locator<ShowListNotifier>(),
         ),
@@ -96,7 +91,6 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            /// movies
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeMoviePage());
             case PopularMoviesPage.ROUTE_NAME:
@@ -111,12 +105,8 @@ class MyApp extends StatelessWidget {
               );
             case SearchPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchPage());
-            // case WatchlistMoviesPage.ROUTE_NAME:
-            //   return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
-
-            /// shows
             case HomeShowPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => HomeShowPage());
             case PopularShowsPage.ROUTE_NAME:
@@ -131,8 +121,6 @@ class MyApp extends StatelessWidget {
               );
             case SearchShowsPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchShowsPage());
-            // case WatchlistShowsPage.ROUTE_NAME:
-            //   return MaterialPageRoute(builder: (_) => WatchlistShowsPage());
             case WatchlistPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => WatchlistPage());
             default:

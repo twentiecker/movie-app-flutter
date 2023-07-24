@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton_flutter/common/constants.dart';
-import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
-import 'package:ditonton_flutter/presentation/pages/about_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/popular_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/search_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/show_detail_page.dart';
@@ -23,11 +21,10 @@ class _HomeShowPageState extends State<HomeShowPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => Provider.of<ShowListNotifier>(context, listen: false)
-          ..fetchAiringTodayShows()
-          ..fetchPopularShows()
-          ..fetchTopRatedShows());
+    Future.microtask(() => Provider.of<ShowListNotifier>(context, listen: false)
+      ..fetchAiringTodayShows()
+      ..fetchPopularShows()
+      ..fetchTopRatedShows());
   }
 
   @override

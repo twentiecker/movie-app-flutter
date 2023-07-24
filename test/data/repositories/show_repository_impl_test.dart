@@ -37,7 +37,7 @@ void main() {
     originalLanguage: "de",
     originalName: "Tagesschau",
     overview:
-    "German daily news program, the oldest still existing program on German television.",
+        "German daily news program, the oldest still existing program on German television.",
     popularity: 2918.048,
     posterPath: "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
     voteAverage: 7.3,
@@ -53,7 +53,7 @@ void main() {
     originalLanguage: "de",
     originalName: "Tagesschau",
     overview:
-    "German daily news program, the oldest still existing program on German television.",
+        "German daily news program, the oldest still existing program on German television.",
     popularity: 2918.048,
     posterPath: "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
     voteAverage: 7.3,
@@ -125,8 +125,7 @@ void main() {
         'should return server failure when call to data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getPopularShows())
-          .thenThrow(ServerException());
+      when(mockRemoteDataSource.getPopularShows()).thenThrow(ServerException());
       // act
       final result = await repository.getPopularShows();
       // assert

@@ -31,10 +31,9 @@ void main() {
     test('should return list of Show Model when the response code is 200',
         () async {
       // arrange
-      when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/shows/airing_today.json'), 200));
+      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/shows/airing_today.json'), 200));
       // act
       final result = await dataSource.getAiringTodayShows();
       // assert
@@ -45,8 +44,7 @@ void main() {
         'should throw a ServerException when the response code is 404 or other',
         () async {
       // arrange
-      when(mockHttpClient
-              .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
+      when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getAiringTodayShows();
@@ -56,16 +54,16 @@ void main() {
   });
 
   group('get Popular Shows', () {
-    final tShowList =
-        ShowResponse.fromJson(json.decode(readJson('dummy_data/shows/popular_show.json')))
-            .showList;
+    final tShowList = ShowResponse.fromJson(
+            json.decode(readJson('dummy_data/shows/popular_show.json')))
+        .showList;
 
     test('should return list of shows when response is success (200)',
         () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/shows/popular_show.json'), 200));
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/shows/popular_show.json'), 200));
       // act
       final result = await dataSource.getPopularShows();
       // assert
@@ -93,8 +91,8 @@ void main() {
     test('should return list of shows when response code is 200 ', () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/shows/top_rated_show.json'), 200));
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/shows/top_rated_show.json'), 200));
       // act
       final result = await dataSource.getTopRatedShows();
       // assert
@@ -121,8 +119,8 @@ void main() {
     test('should return show detail when the response code is 200', () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/$tId?$API_KEY')))
-          .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/shows/show_detail.json'), 200));
+          .thenAnswer((_) async => http.Response(
+              readJson('dummy_data/shows/show_detail.json'), 200));
       // act
       final result = await dataSource.getShowDetail(tId);
       // assert
@@ -174,8 +172,8 @@ void main() {
   });
 
   group('search shows', () {
-    final tSearchResult = ShowResponse.fromJson(
-            json.decode(readJson('dummy_data/shows/search_tagesschau_show.json')))
+    final tSearchResult = ShowResponse.fromJson(json
+            .decode(readJson('dummy_data/shows/search_tagesschau_show.json')))
         .showList;
     final tQuery = 'Tagesschau';
 

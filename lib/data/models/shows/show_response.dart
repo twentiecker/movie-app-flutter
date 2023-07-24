@@ -1,8 +1,6 @@
 import 'package:ditonton_flutter/data/models/shows/show_model.dart';
 import 'package:equatable/equatable.dart';
 
-// import '../movie_model.dart';
-
 class ShowResponse extends Equatable {
   final List<ShowModel> showList;
 

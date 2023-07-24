@@ -24,24 +24,24 @@ class ShowDetailResponse extends Equatable {
     required this.voteCount,
   });
 
-  bool adult;
-  String? backdropPath;
-  String firstAirDate;
-  List<GenreModel> genres;
-  String homepage;
-  int id;
-  String name;
-  int numberOfEpisodes;
-  int numberOfSeasons;
-  String originalLanguage;
-  String originalName;
-  String overview;
-  double popularity;
-  String posterPath;
-  String status;
-  String tagline;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final String? backdropPath;
+  final String firstAirDate;
+  final List<GenreModel> genres;
+  final String homepage;
+  final int id;
+  final String name;
+  final int numberOfEpisodes;
+  final int numberOfSeasons;
+  final String originalLanguage;
+  final String originalName;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final String status;
+  final String tagline;
+  final double voteAverage;
+  final int voteCount;
 
   factory ShowDetailResponse.fromJson(Map<String, dynamic> json) =>
       ShowDetailResponse(

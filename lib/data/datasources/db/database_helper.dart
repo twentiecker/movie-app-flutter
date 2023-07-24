@@ -88,7 +88,6 @@ class DatabaseHelper {
     return results;
   }
 
-  /// TV Series
   Future<int> insertWatchlistShow(ShowTable show) async {
     final db = await database;
     return await db!.insert(_tblWatchlistShow, show.toJson());
