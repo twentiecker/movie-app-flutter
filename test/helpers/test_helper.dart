@@ -7,6 +7,7 @@ import 'package:ditonton_flutter/domain/repositories/movie_repository.dart';
 import 'package:ditonton_flutter/domain/repositories/show_repository.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 @GenerateMocks([
   MovieRepository,
@@ -17,6 +18,7 @@ import 'package:http/http.dart' as http;
   ShowRemoteDataSource,
   ShowLocalDataSource
 ], customMocks: [
-  MockSpec<http.Client>(as: #MockHttpClient)
+  // MockSpec<http.Client>(as: #MockHttpClient)
+  MockSpec<IOClient>(as: #MockIOClient)
 ])
 void main() {}

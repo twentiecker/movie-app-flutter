@@ -43,10 +43,15 @@ import 'package:ditonton_flutter/presentation/provider/movies/top_rated_movies_n
 import 'package:ditonton_flutter/presentation/provider/movies/watchlist_movie_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:http/io_client.dart';
+
+import 'common/ssl_pinning.dart';
 
 final locator = GetIt.instance;
 
-void init() {
+Future<void> init() async {
+  IOClient ioClient = await SslPinning.ioClient;
+
   // bloc
   locator.registerFactory(
     () => MovieSearchBloc(
@@ -183,5 +188,6 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  // locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton<IOClient>(() => ioClient);
 }

@@ -5,6 +5,7 @@ import 'package:ditonton_flutter/data/models/movies/movie_detail_model.dart';
 import 'package:ditonton_flutter/data/models/movies/movie_model.dart';
 import 'package:ditonton_flutter/data/models/movies/movie_response.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
@@ -24,7 +25,8 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   static const API_KEY = 'api_key=c21b7029b812a242b36580f34db559c6';
   static const BASE_URL = 'https://api.themoviedb.org/3';
 
-  final http.Client client;
+  // final http.Client client;
+  final IOClient client;
 
   MovieRemoteDataSourceImpl({required this.client});
 
