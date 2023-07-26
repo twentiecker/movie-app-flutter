@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618482476858",
+    "project_id": "ditonton-flutter-b17a3",
+    "storage_bucket": "ditonton-flutter-b17a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618482476858:android:a93d88a42bc8767b22d203",
+        "android_client_info": {
+          "package_name": "com.twentiecker.ditonton_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618482476858-bglrh55qoeeqjvj3qlij6tcf0ofv3740.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2dm7vKPPf5OKt3R9ulfPoppEktCO9n2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618482476858-bglrh55qoeeqjvj3qlij6tcf0ofv3740.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,7 @@ import 'package:ditonton_flutter/presentation/pages/movies/top_rated_movies_page
 import 'package:ditonton_flutter/presentation/pages/watchlist_page.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_list_notifier.dart';
 import 'package:ditonton_flutter/common/state_enum.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,6 +54,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: const Icon(Icons.tv),
               title: const Text('TV Series'),
               onTap: () {
+                // FirebaseCrashlytics.instance.crash();
                 Navigator.pushNamed(context, HomeShowPage.ROUTE_NAME);
               },
             ),

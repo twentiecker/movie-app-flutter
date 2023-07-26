@@ -24,6 +24,7 @@ import 'package:ditonton_flutter/presentation/provider/shows/top_rated_shows_not
 import 'package:ditonton_flutter/presentation/provider/shows/watchlist_show_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/top_rated_movies_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/watchlist_movie_notifier.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ditonton_flutter/injection.dart' as di;
@@ -32,9 +33,13 @@ import 'package:provider/provider.dart';
 
 import 'common/constants.dart';
 import 'common/utils.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await di.init();
   runApp(const MyApp());
 }
