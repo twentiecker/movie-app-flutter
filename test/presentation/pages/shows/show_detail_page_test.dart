@@ -31,9 +31,9 @@ void main() {
   testWidgets(
       'Watchlist button should display add icon when show not added to watchlist',
       (WidgetTester tester) async {
-    when(mockNotifier.showState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.showState).thenReturn(RequestState.loaded);
     when(mockNotifier.show).thenReturn(testShowDetail);
-    when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.loaded);
     when(mockNotifier.showRecommendations).thenReturn(<Show>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(false);
 
@@ -47,9 +47,9 @@ void main() {
   testWidgets(
       'Watchlist button should dispay check icon when show is added to wathclist',
       (WidgetTester tester) async {
-    when(mockNotifier.showState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.showState).thenReturn(RequestState.loaded);
     when(mockNotifier.show).thenReturn(testShowDetail);
-    when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.loaded);
     when(mockNotifier.showRecommendations).thenReturn(<Show>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(true);
 
@@ -63,9 +63,9 @@ void main() {
   testWidgets(
       'Watchlist button should display Snackbar when added to watchlist',
       (WidgetTester tester) async {
-    when(mockNotifier.showState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.showState).thenReturn(RequestState.loaded);
     when(mockNotifier.show).thenReturn(testShowDetail);
-    when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.loaded);
     when(mockNotifier.showRecommendations).thenReturn(<Show>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(false);
     when(mockNotifier.watchlistMessage).thenReturn('Added to Watchlist');
@@ -86,9 +86,9 @@ void main() {
   testWidgets(
       'Watchlist button should display AlertDialog when add to watchlist failed',
       (WidgetTester tester) async {
-    when(mockNotifier.showState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.showState).thenReturn(RequestState.loaded);
     when(mockNotifier.show).thenReturn(testShowDetail);
-    when(mockNotifier.recommendationState).thenReturn(RequestState.Loaded);
+    when(mockNotifier.recommendationState).thenReturn(RequestState.loaded);
     when(mockNotifier.showRecommendations).thenReturn(<Show>[]);
     when(mockNotifier.isAddedToWatchlist).thenReturn(false);
     when(mockNotifier.watchlistMessage).thenReturn('Failed');

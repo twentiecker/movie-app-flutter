@@ -10,7 +10,7 @@ abstract class MovieRecommendationsEvent extends Equatable {
 class OnMovieRecommendations extends MovieRecommendationsEvent {
   final int id;
 
-  OnMovieRecommendations(this.id);
+  const OnMovieRecommendations(this.id);
 
   @override
   List<Object> get props => [id];

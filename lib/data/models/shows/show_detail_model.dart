@@ -3,7 +3,7 @@ import 'package:ditonton_flutter/domain/entities/shows/show_detail.dart';
 import 'package:equatable/equatable.dart';
 
 class ShowDetailResponse extends Equatable {
-  ShowDetailResponse({
+  const ShowDetailResponse({
     required this.adult,
     required this.backdropPath,
     required this.firstAirDate,

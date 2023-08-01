@@ -10,7 +10,7 @@ abstract class SaveShowEvent extends Equatable {
 class OnSaveFromWatchlist extends SaveShowEvent {
   final ShowDetail show;
 
-  OnSaveFromWatchlist(this.show);
+  const OnSaveFromWatchlist(this.show);
 
   @override
   List<Object> get props => [show];

@@ -14,7 +14,7 @@ class AiringTodayLoading extends AiringTodayShowsState {}
 class AiringTodayError extends AiringTodayShowsState {
   final String message;
 
-  AiringTodayError(this.message);
+  const AiringTodayError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class AiringTodayError extends AiringTodayShowsState {
 class AiringTodayHasData extends AiringTodayShowsState {
   final List<Show> result;
 
-  AiringTodayHasData(this.result);
+  const AiringTodayHasData(this.result);
 
   @override
   List<Object> get props => [result];

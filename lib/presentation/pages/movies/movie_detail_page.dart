@@ -1,38 +1,36 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton_flutter/common/constants.dart';
 import 'package:ditonton_flutter/domain/entities/genre.dart';
-import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/movies/movie_detail.dart';
 import 'package:ditonton_flutter/presentation/bloc/movies/movie_detail/movie_detail_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/movies/movie_recommendations/movie_recommendations_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/movie_status/movie_status_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/remove_movie/remove_movie_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/save_movie/save_movie_bloc.dart';
-import 'package:ditonton_flutter/presentation/provider/movies/movie_detail_notifier.dart';
-import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail';
+  static const routeName = '/detail';
 
   final int id;
 
-  MovieDetailPage({required this.id});
+  const MovieDetailPage({super.key, required this.id});
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  MovieDetailPageState createState() => MovieDetailPageState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> {
+class MovieDetailPageState extends State<MovieDetailPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       context.read<MovieDetailBloc>().add(OnMovieDetail(widget.id));
-      context.read<MovieRecommendationsBloc>().add(OnMovieRecommendations(widget.id));
+      context
+          .read<MovieRecommendationsBloc>()
+          .add(OnMovieRecommendations(widget.id));
       context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(widget.id));
       // Provider.of<MovieDetailNotifier>(context, listen: false)
       //     .fetchMovieDetail(widget.id);
@@ -97,11 +95,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
 
 class DetailContent extends StatelessWidget {
   final MovieDetail movie;
+
   // final List<Movie> recommendations;
   // final bool isAddedWatchlist;
 
   // DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
-  DetailContent(this.movie);
+  const DetailContent(this.movie, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,19 +153,29 @@ class DetailContent extends StatelessWidget {
                                         //     context,
                                         //     listen: false)
                                         //     .addWatchlist(movie);
-                                        context.read<SaveMovieBloc>().add(OnSaveFromWatchlist(movie));
-                                        context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(movie.id));
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('Added to Watchlist')));
+                                        context
+                                            .read<SaveMovieBloc>()
+                                            .add(OnSaveFromWatchlist(movie));
+                                        context.read<MovieStatusBloc>().add(
+                                            OnLoadWatchlistStatus(movie.id));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    'Added to Watchlist')));
                                       } else {
                                         // await Provider.of<MovieDetailNotifier>(
                                         //     context,
                                         //     listen: false)
                                         //     .removeFromWatchlist(movie);
-                                        context.read<RemoveMovieBloc>().add(OnRemoveFromWatchlist(movie));
-                                        context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(movie.id));
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('Removed from Watchlist')));
+                                        context
+                                            .read<RemoveMovieBloc>()
+                                            .add(OnRemoveFromWatchlist(movie));
+                                        context.read<MovieStatusBloc>().add(
+                                            OnLoadWatchlistStatus(movie.id));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    'Removed from Watchlist')));
                                       }
 
                                       // final message =
@@ -294,7 +303,8 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            BlocBuilder<MovieRecommendationsBloc, MovieRecommendationsState>(
+                            BlocBuilder<MovieRecommendationsBloc,
+                                MovieRecommendationsState>(
                               builder: (context, state) {
                                 if (state is RecommendationsLoading) {
                                   return const Center(
@@ -302,7 +312,7 @@ class DetailContent extends StatelessWidget {
                                   );
                                 } else if (state is RecommendationsHasData) {
                                   final result = state.result;
-                                  return Container(
+                                  return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
@@ -314,26 +324,26 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                MovieDetailPage.ROUTE_NAME,
+                                                MovieDetailPage.routeName,
                                                 arguments: movie.id,
                                               );
                                             },
                                             child: ClipRRect(
                                               borderRadius:
-                                              const BorderRadius.all(
+                                                  const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                                                 placeholder: (context, url) =>
-                                                const Center(
+                                                    const Center(
                                                   child:
-                                                  CircularProgressIndicator(),
+                                                      CircularProgressIndicator(),
                                                 ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                const Icon(Icons.error),
+                                                        const Icon(Icons.error),
                                               ),
                                             ),
                                           ),
@@ -454,7 +464,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<Genre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

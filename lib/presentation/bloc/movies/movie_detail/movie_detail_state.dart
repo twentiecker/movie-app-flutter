@@ -14,7 +14,7 @@ class DetailLoading extends MovieDetailState {}
 class DetailError extends MovieDetailState {
   final String message;
 
-  DetailError(this.message);
+  const DetailError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class DetailError extends MovieDetailState {
 class DetailHasData extends MovieDetailState {
   final MovieDetail result;
 
-  DetailHasData(this.result);
+  const DetailHasData(this.result);
 
   @override
   List<Object> get props => [result];

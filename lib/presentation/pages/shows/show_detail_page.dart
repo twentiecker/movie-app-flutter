@@ -1,38 +1,36 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton_flutter/common/constants.dart';
 import 'package:ditonton_flutter/domain/entities/genre.dart';
-import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show_detail.dart';
-import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/show_detail/show_detail_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/show_recommendations/show_recommendations_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/remove_show/remove_show_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/save_show/save_show_bloc.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/show_status/show_status_bloc.dart';
-import 'package:ditonton_flutter/presentation/provider/shows/show_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:provider/provider.dart';
 
 class ShowDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-show';
+  static const routeName = '/detail-show';
 
   final int id;
 
-  ShowDetailPage({required this.id});
+  const ShowDetailPage({super.key, required this.id});
 
   @override
-  _ShowDetailPageState createState() => _ShowDetailPageState();
+  ShowDetailPageState createState() => ShowDetailPageState();
 }
 
-class _ShowDetailPageState extends State<ShowDetailPage> {
+class ShowDetailPageState extends State<ShowDetailPage> {
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       context.read<ShowDetailBloc>().add(OnShowDetail(widget.id));
-      context.read<ShowRecommendationsBloc>().add(OnShowRecommendations(widget.id));
+      context
+          .read<ShowRecommendationsBloc>()
+          .add(OnShowRecommendations(widget.id));
       context.read<ShowStatusBloc>().add(OnLoadWatchlistStatus(widget.id));
       // Provider.of<ShowDetailNotifier>(context, listen: false)
       //     .fetchShowDetail(widget.id);
@@ -90,11 +88,12 @@ class _ShowDetailPageState extends State<ShowDetailPage> {
 
 class DetailContent extends StatelessWidget {
   final ShowDetail show;
+
   // final List<Show> recommendations;
   // final bool isAddedWatchlist;
 
   // DetailContent(this.show, this.recommendations, this.isAddedWatchlist);
-  DetailContent(this.show);
+  const DetailContent(this.show, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -143,18 +142,26 @@ class DetailContent extends StatelessWidget {
                                   return ElevatedButton(
                                     onPressed: () async {
                                       if (!result) {
-                                        context.read<SaveShowBloc>().add(OnSaveFromWatchlist(show));
-                                        context.read<ShowStatusBloc>().add(OnLoadWatchlistStatus(show.id));
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('Added to Watchlist')));
+                                        context
+                                            .read<SaveShowBloc>()
+                                            .add(OnSaveFromWatchlist(show));
+                                        context.read<ShowStatusBloc>().add(
+                                            OnLoadWatchlistStatus(show.id));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    'Added to Watchlist')));
                                       } else {
-                                        context.read<RemoveShowBloc>().add(OnRemoveFromWatchlist(show));
-                                        context.read<ShowStatusBloc>().add(OnLoadWatchlistStatus(show.id));
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text('Removed from Watchlist')));
+                                        context
+                                            .read<RemoveShowBloc>()
+                                            .add(OnRemoveFromWatchlist(show));
+                                        context.read<ShowStatusBloc>().add(
+                                            OnLoadWatchlistStatus(show.id));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    'Removed from Watchlist')));
                                       }
-
-
                                     },
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -166,7 +173,6 @@ class DetailContent extends StatelessWidget {
                                       ],
                                     ),
                                   );
-
                                 } else {
                                   return Container();
                                 }
@@ -247,7 +253,8 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            BlocBuilder<ShowRecommendationsBloc, ShowRecommendationsState>(
+                            BlocBuilder<ShowRecommendationsBloc,
+                                ShowRecommendationsState>(
                               builder: (context, state) {
                                 if (state is RecommendationsLoading) {
                                   return const Center(
@@ -255,7 +262,7 @@ class DetailContent extends StatelessWidget {
                                   );
                                 } else if (state is RecommendationsHasData) {
                                   final result = state.result;
-                                  return Container(
+                                  return SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
@@ -267,26 +274,26 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                ShowDetailPage.ROUTE_NAME,
+                                                ShowDetailPage.routeName,
                                                 arguments: show.id,
                                               );
                                             },
                                             child: ClipRRect(
                                               borderRadius:
-                                              const BorderRadius.all(
+                                                  const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                'https://image.tmdb.org/t/p/w500${show.posterPath}',
+                                                    'https://image.tmdb.org/t/p/w500${show.posterPath}',
                                                 placeholder: (context, url) =>
-                                                const Center(
+                                                    const Center(
                                                   child:
-                                                  CircularProgressIndicator(),
+                                                      CircularProgressIndicator(),
                                                 ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                const Icon(Icons.error),
+                                                        const Icon(Icons.error),
                                               ),
                                             ),
                                           ),
@@ -295,7 +302,6 @@ class DetailContent extends StatelessWidget {
                                       itemCount: result.length,
                                     ),
                                   );
-
                                 } else if (state is RecommendationsError) {
                                   return Center(
                                     child: Text(state.message),
@@ -401,7 +407,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<Genre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

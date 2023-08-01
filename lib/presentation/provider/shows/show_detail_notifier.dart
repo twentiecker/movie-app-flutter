@@ -31,7 +31,7 @@ class ShowDetailNotifier extends ChangeNotifier {
 
   ShowDetail get show => _show;
 
-  RequestState _showState = RequestState.Empty;
+  RequestState _showState = RequestState.empty;
 
   RequestState get showState => _showState;
 
@@ -39,7 +39,7 @@ class ShowDetailNotifier extends ChangeNotifier {
 
   List<Show> get showRecommendations => _showRecommendations;
 
-  RequestState _recommendationState = RequestState.Empty;
+  RequestState _recommendationState = RequestState.empty;
 
   RequestState get recommendationState => _recommendationState;
 
@@ -52,31 +52,31 @@ class ShowDetailNotifier extends ChangeNotifier {
   bool get isAddedToWatchlist => _isAddedtoWatchlist;
 
   Future<void> fetchShowDetail(int id) async {
-    _showState = RequestState.Loading;
+    _showState = RequestState.loading;
     notifyListeners();
     final detailResult = await getShowDetail.execute(id);
     final recommendationResult = await getShowRecommendations.execute(id);
     detailResult.fold(
       (failure) {
-        _showState = RequestState.Error;
+        _showState = RequestState.error;
         _message = failure.message;
         notifyListeners();
       },
       (show) {
-        _recommendationState = RequestState.Loading;
+        _recommendationState = RequestState.loading;
         _show = show;
         notifyListeners();
         recommendationResult.fold(
           (failure) {
-            _recommendationState = RequestState.Error;
+            _recommendationState = RequestState.error;
             _message = failure.message;
           },
           (shows) {
-            _recommendationState = RequestState.Loaded;
+            _recommendationState = RequestState.loaded;
             _showRecommendations = shows;
           },
         );
-        _showState = RequestState.Loaded;
+        _showState = RequestState.loaded;
         notifyListeners();
       },
     );

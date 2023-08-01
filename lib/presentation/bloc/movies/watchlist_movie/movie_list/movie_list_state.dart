@@ -14,7 +14,7 @@ class MovieListLoading extends MovieListState {}
 class MovieListError extends MovieListState {
   final String message;
 
-  MovieListError(this.message);
+  const MovieListError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class MovieListError extends MovieListState {
 class MovieListHasData extends MovieListState {
   final List<Movie> result;
 
-  MovieListHasData(this.result);
+  const MovieListHasData(this.result);
 
   @override
   List<Object> get props => [result];

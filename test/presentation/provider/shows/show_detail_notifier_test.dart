@@ -92,7 +92,7 @@ void main() {
       // act
       provider.fetchShowDetail(tId);
       // assert
-      expect(provider.showState, RequestState.Loading);
+      expect(provider.showState, RequestState.loading);
       expect(listenerCallCount, 1);
     });
 
@@ -102,7 +102,7 @@ void main() {
       // act
       await provider.fetchShowDetail(tId);
       // assert
-      expect(provider.showState, RequestState.Loaded);
+      expect(provider.showState, RequestState.loaded);
       expect(provider.show, testShowDetail);
       expect(listenerCallCount, 3);
     });
@@ -114,7 +114,7 @@ void main() {
       // act
       await provider.fetchShowDetail(tId);
       // assert
-      expect(provider.showState, RequestState.Loaded);
+      expect(provider.showState, RequestState.loaded);
       expect(provider.showRecommendations, tShows);
     });
   });
@@ -137,7 +137,7 @@ void main() {
       // act
       await provider.fetchShowDetail(tId);
       // assert
-      expect(provider.recommendationState, RequestState.Loaded);
+      expect(provider.recommendationState, RequestState.loaded);
       expect(provider.showRecommendations, tShows);
     });
 
@@ -150,7 +150,7 @@ void main() {
       // act
       await provider.fetchShowDetail(tId);
       // assert
-      expect(provider.recommendationState, RequestState.Error);
+      expect(provider.recommendationState, RequestState.error);
       expect(provider.message, 'Failed');
     });
   });
@@ -228,7 +228,7 @@ void main() {
       // act
       await provider.fetchShowDetail(tId);
       // assert
-      expect(provider.showState, RequestState.Error);
+      expect(provider.showState, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });

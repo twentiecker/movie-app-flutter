@@ -1,11 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show_detail.dart';
 import 'package:ditonton_flutter/domain/usecases/shows/get_show_detail.dart';
-import 'package:ditonton_flutter/domain/usecases/shows/get_show_recommendations.dart';
-import 'package:ditonton_flutter/presentation/bloc/shows/show_recommendations/show_recommendations_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part '../show_detail/show_detail_event.dart';
 

@@ -59,7 +59,6 @@ import 'package:ditonton_flutter/presentation/provider/shows/top_rated_shows_not
 import 'package:ditonton_flutter/presentation/provider/shows/watchlist_show_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/top_rated_movies_notifier.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/watchlist_movie_notifier.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:http/io_client.dart';
 
@@ -102,72 +101,72 @@ Future<void> init() async {
     ),
   );
   locator.registerFactory(
-        () => SaveMovieBloc(
+    () => SaveMovieBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => RemoveMovieBloc(
+    () => RemoveMovieBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => MovieStatusBloc(
+    () => MovieStatusBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => MovieListBloc(
+    () => MovieListBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => ShowSearchBloc(
+    () => ShowSearchBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => ShowDetailBloc(
+    () => ShowDetailBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => ShowRecommendationsBloc(
+    () => ShowRecommendationsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => AiringTodayShowsBloc(
+    () => AiringTodayShowsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => PopularShowsBloc(
+    () => PopularShowsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => TopRatedShowsBloc(
+    () => TopRatedShowsBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => SaveShowBloc(
+    () => SaveShowBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => RemoveShowBloc(
+    () => RemoveShowBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => ShowStatusBloc(
+    () => ShowStatusBloc(
       locator(),
     ),
   );
   locator.registerFactory(
-        () => ShowListBloc(
+    () => ShowListBloc(
       locator(),
     ),
   );

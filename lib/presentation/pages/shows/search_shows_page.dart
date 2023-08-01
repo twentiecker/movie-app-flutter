@@ -1,14 +1,13 @@
 import 'package:ditonton_flutter/common/constants.dart';
-import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/show_search/show_search_bloc.dart';
-import 'package:ditonton_flutter/presentation/provider/shows/show_search_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/show_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class SearchShowsPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search-shows';
+  static const routeName = '/search-shows';
+
+  const SearchShowsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class SearchShowsPage extends StatelessWidget {
             BlocBuilder<ShowSearchBloc, ShowSearchState>(
               builder: (context, state) {
                 if (state is SearchLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is SearchHasData) {

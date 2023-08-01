@@ -7,7 +7,8 @@ part '../now_playing_movies/now_playing_movies_event.dart';
 
 part '../now_playing_movies/now_playing_movies_state.dart';
 
-class NowPlayingMoviesBloc extends Bloc<NowPlayingMoviesEvent, NowPlayingMoviesState> {
+class NowPlayingMoviesBloc
+    extends Bloc<NowPlayingMoviesEvent, NowPlayingMoviesState> {
   final GetNowPlayingMovies _getNowPlayingMovies;
 
   NowPlayingMoviesBloc(this._getNowPlayingMovies) : super(NowPlayingEmpty()) {

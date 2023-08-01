@@ -8,7 +8,7 @@ class TopRatedShowsNotifier extends ChangeNotifier {
 
   TopRatedShowsNotifier({required this.getTopRatedShows});
 
-  RequestState _state = RequestState.Empty;
+  RequestState _state = RequestState.empty;
 
   RequestState get state => _state;
 
@@ -21,7 +21,7 @@ class TopRatedShowsNotifier extends ChangeNotifier {
   String get message => _message;
 
   Future<void> fetchTopRatedShows() async {
-    _state = RequestState.Loading;
+    _state = RequestState.loading;
     notifyListeners();
 
     final result = await getTopRatedShows.execute();
@@ -29,12 +29,12 @@ class TopRatedShowsNotifier extends ChangeNotifier {
     result.fold(
       (failure) {
         _message = failure.message;
-        _state = RequestState.Error;
+        _state = RequestState.error;
         notifyListeners();
       },
       (showsData) {
         _shows = showsData;
-        _state = RequestState.Loaded;
+        _state = RequestState.loaded;
         notifyListeners();
       },
     );

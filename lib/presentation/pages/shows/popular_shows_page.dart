@@ -1,26 +1,25 @@
-import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/popular_shows/popular_shows_bloc.dart';
-import 'package:ditonton_flutter/presentation/provider/shows/popular_shows_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/show_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class PopularShowsPage extends StatefulWidget {
-  static const ROUTE_NAME = '/popular-show';
+  static const routeName = '/popular-show';
+
+  const PopularShowsPage({super.key});
 
   @override
-  _PopularShowsPageState createState() => _PopularShowsPageState();
+  PopularShowsPageState createState() => PopularShowsPageState();
 }
 
-class _PopularShowsPageState extends State<PopularShowsPage> {
+class PopularShowsPageState extends State<PopularShowsPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<PopularShowsBloc>().add(OnPopularShows()));
-        // Provider.of<PopularShowsNotifier>(context, listen: false)
-        //     .fetchPopularShows());
+    Future.microtask(
+        () => context.read<PopularShowsBloc>().add(OnPopularShows()));
+    // Provider.of<PopularShowsNotifier>(context, listen: false)
+    //     .fetchPopularShows());
   }
 
   @override
@@ -47,7 +46,7 @@ class _PopularShowsPageState extends State<PopularShowsPage> {
                 itemCount: result.length,
               );
             } else if (state is PopularError) {
-              return  Center(
+              return Center(
                 child: Text(state.message),
               );
             } else {

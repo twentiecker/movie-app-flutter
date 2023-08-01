@@ -12,7 +12,7 @@ class SaveEmpty extends SaveMovieState {}
 class SaveError extends SaveMovieState {
   final String message;
 
-  SaveError(this.message);
+  const SaveError(this.message);
 
   @override
   List<Object> get props => [message];

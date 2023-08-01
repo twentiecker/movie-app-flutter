@@ -2,7 +2,7 @@ import 'package:ditonton_flutter/domain/entities/genre.dart';
 import 'package:equatable/equatable.dart';
 
 class ShowDetail extends Equatable {
-  ShowDetail({
+  const ShowDetail({
     required this.adult,
     required this.backdropPath,
     required this.firstAirDate,
@@ -17,18 +17,18 @@ class ShowDetail extends Equatable {
     required this.voteCount,
   });
 
-  bool adult;
-  String? backdropPath;
-  String firstAirDate;
-  List<Genre> genres;
-  int id;
-  String name;
-  String originalName;
-  String overview;
-  double popularity;
-  String posterPath;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final String? backdropPath;
+  final String firstAirDate;
+  final List<Genre> genres;
+  final int id;
+  final String name;
+  final String originalName;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final double voteAverage;
+  final int voteCount;
 
   @override
   List<Object?> get props => [

@@ -10,7 +10,7 @@ abstract class ShowDetailEvent extends Equatable {
 class OnShowDetail extends ShowDetailEvent {
   final int id;
 
-  OnShowDetail(this.id);
+  const OnShowDetail(this.id);
 
   @override
   List<Object> get props => [id];

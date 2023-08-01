@@ -12,7 +12,7 @@ class RemoveEmpty extends RemoveMovieState {}
 class RemoveError extends RemoveMovieState {
   final String message;
 
-  RemoveError(this.message);
+  const RemoveError(this.message);
 
   @override
   List<Object> get props => [message];

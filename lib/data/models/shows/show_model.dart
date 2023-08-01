@@ -2,7 +2,7 @@ import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:equatable/equatable.dart';
 
 class ShowModel extends Equatable {
-  ShowModel({
+  const ShowModel({
     this.backdropPath,
     required this.firstAirDate,
     required this.genreIds,

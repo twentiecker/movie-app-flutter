@@ -53,7 +53,7 @@ void main() {
 
   group('now playing shows', () {
     test('initialState should be Empty', () {
-      expect(provider.airingTodayState, equals(RequestState.Empty));
+      expect(provider.airingTodayState, equals(RequestState.empty));
     });
 
     test('should get data from the usecase', () async {
@@ -73,7 +73,7 @@ void main() {
       // act
       provider.fetchAiringTodayShows();
       // assert
-      expect(provider.airingTodayState, RequestState.Loading);
+      expect(provider.airingTodayState, RequestState.loading);
     });
 
     test('should change shows when data is gotten successfully', () async {
@@ -83,7 +83,7 @@ void main() {
       // act
       await provider.fetchAiringTodayShows();
       // assert
-      expect(provider.airingTodayState, RequestState.Loaded);
+      expect(provider.airingTodayState, RequestState.loaded);
       expect(provider.airingTodayShows, tShowList);
       expect(listenerCallCount, 2);
     });
@@ -95,7 +95,7 @@ void main() {
       // act
       await provider.fetchAiringTodayShows();
       // assert
-      expect(provider.airingTodayState, RequestState.Error);
+      expect(provider.airingTodayState, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });
@@ -109,7 +109,7 @@ void main() {
       // act
       provider.fetchPopularShows();
       // assert
-      expect(provider.popularShowsState, RequestState.Loading);
+      expect(provider.popularShowsState, RequestState.loading);
       // verify(provider.setState(RequestState.Loading));
     });
 
@@ -121,7 +121,7 @@ void main() {
       // act
       await provider.fetchPopularShows();
       // assert
-      expect(provider.popularShowsState, RequestState.Loaded);
+      expect(provider.popularShowsState, RequestState.loaded);
       expect(provider.popularShows, tShowList);
       expect(listenerCallCount, 2);
     });
@@ -133,7 +133,7 @@ void main() {
       // act
       await provider.fetchPopularShows();
       // assert
-      expect(provider.popularShowsState, RequestState.Error);
+      expect(provider.popularShowsState, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });
@@ -147,7 +147,7 @@ void main() {
       // act
       provider.fetchTopRatedShows();
       // assert
-      expect(provider.topRatedShowsState, RequestState.Loading);
+      expect(provider.topRatedShowsState, RequestState.loading);
     });
 
     test('should change shows data when data is gotten successfully',
@@ -158,7 +158,7 @@ void main() {
       // act
       await provider.fetchTopRatedShows();
       // assert
-      expect(provider.topRatedShowsState, RequestState.Loaded);
+      expect(provider.topRatedShowsState, RequestState.loaded);
       expect(provider.topRatedShows, tShowList);
       expect(listenerCallCount, 2);
     });
@@ -170,7 +170,7 @@ void main() {
       // act
       await provider.fetchTopRatedShows();
       // assert
-      expect(provider.topRatedShowsState, RequestState.Error);
+      expect(provider.topRatedShowsState, RequestState.error);
       expect(provider.message, 'Server Failure');
       expect(listenerCallCount, 2);
     });

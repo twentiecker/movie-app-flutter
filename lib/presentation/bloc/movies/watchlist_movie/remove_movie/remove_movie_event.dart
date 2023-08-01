@@ -10,7 +10,7 @@ abstract class RemoveMovieEvent extends Equatable {
 class OnRemoveFromWatchlist extends RemoveMovieEvent {
   final MovieDetail movie;
 
-  OnRemoveFromWatchlist(this.movie);
+  const OnRemoveFromWatchlist(this.movie);
 
   @override
   List<Object> get props => [movie];

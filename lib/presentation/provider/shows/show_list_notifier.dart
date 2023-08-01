@@ -10,7 +10,7 @@ class ShowListNotifier extends ChangeNotifier {
 
   List<Show> get airingTodayShows => _airingTodayShows;
 
-  RequestState _airingTodayState = RequestState.Empty;
+  RequestState _airingTodayState = RequestState.empty;
 
   RequestState get airingTodayState => _airingTodayState;
 
@@ -18,7 +18,7 @@ class ShowListNotifier extends ChangeNotifier {
 
   List<Show> get popularShows => _popularShows;
 
-  RequestState _popularShowsState = RequestState.Empty;
+  RequestState _popularShowsState = RequestState.empty;
 
   RequestState get popularShowsState => _popularShowsState;
 
@@ -26,7 +26,7 @@ class ShowListNotifier extends ChangeNotifier {
 
   List<Show> get topRatedShows => _topRatedShows;
 
-  RequestState _topRatedShowsState = RequestState.Empty;
+  RequestState _topRatedShowsState = RequestState.empty;
 
   RequestState get topRatedShowsState => _topRatedShowsState;
 
@@ -45,18 +45,18 @@ class ShowListNotifier extends ChangeNotifier {
   final GetTopRatedShows getTopRatedShows;
 
   Future<void> fetchAiringTodayShows() async {
-    _airingTodayState = RequestState.Loading;
+    _airingTodayState = RequestState.loading;
     notifyListeners();
 
     final result = await getAiringTodayShows.execute();
     result.fold(
       (failure) {
-        _airingTodayState = RequestState.Error;
+        _airingTodayState = RequestState.error;
         _message = failure.message;
         notifyListeners();
       },
       (showsData) {
-        _airingTodayState = RequestState.Loaded;
+        _airingTodayState = RequestState.loaded;
         _airingTodayShows = showsData;
         notifyListeners();
       },
@@ -64,18 +64,18 @@ class ShowListNotifier extends ChangeNotifier {
   }
 
   Future<void> fetchPopularShows() async {
-    _popularShowsState = RequestState.Loading;
+    _popularShowsState = RequestState.loading;
     notifyListeners();
 
     final result = await getPopularShows.execute();
     result.fold(
       (failure) {
-        _popularShowsState = RequestState.Error;
+        _popularShowsState = RequestState.error;
         _message = failure.message;
         notifyListeners();
       },
       (showsData) {
-        _popularShowsState = RequestState.Loaded;
+        _popularShowsState = RequestState.loaded;
         _popularShows = showsData;
         notifyListeners();
       },
@@ -83,18 +83,18 @@ class ShowListNotifier extends ChangeNotifier {
   }
 
   Future<void> fetchTopRatedShows() async {
-    _topRatedShowsState = RequestState.Loading;
+    _topRatedShowsState = RequestState.loading;
     notifyListeners();
 
     final result = await getTopRatedShows.execute();
     result.fold(
       (failure) {
-        _topRatedShowsState = RequestState.Error;
+        _topRatedShowsState = RequestState.error;
         _message = failure.message;
         notifyListeners();
       },
       (showsData) {
-        _topRatedShowsState = RequestState.Loaded;
+        _topRatedShowsState = RequestState.loaded;
         _topRatedShows = showsData;
         notifyListeners();
       },

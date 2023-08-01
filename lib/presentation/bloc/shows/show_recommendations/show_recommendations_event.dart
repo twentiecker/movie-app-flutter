@@ -10,7 +10,7 @@ abstract class ShowRecommendationsEvent extends Equatable {
 class OnShowRecommendations extends ShowRecommendationsEvent {
   final int id;
 
-  OnShowRecommendations(this.id);
+  const OnShowRecommendations(this.id);
 
   @override
   List<Object> get props => [id];

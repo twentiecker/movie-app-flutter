@@ -10,7 +10,7 @@ abstract class SaveMovieEvent extends Equatable {
 class OnSaveFromWatchlist extends SaveMovieEvent {
   final MovieDetail movie;
 
-  OnSaveFromWatchlist(this.movie);
+  const OnSaveFromWatchlist(this.movie);
 
   @override
   List<Object> get props => [movie];

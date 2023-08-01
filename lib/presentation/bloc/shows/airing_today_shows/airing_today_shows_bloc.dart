@@ -7,7 +7,8 @@ part '../airing_today_shows/airing_today_shows_event.dart';
 
 part '../airing_today_shows/airing_today_shows_state.dart';
 
-class AiringTodayShowsBloc extends Bloc<AiringTodayShowsEvent, AiringTodayShowsState> {
+class AiringTodayShowsBloc
+    extends Bloc<AiringTodayShowsEvent, AiringTodayShowsState> {
   final GetAiringTodayShows _getAiringTodayShows;
 
   AiringTodayShowsBloc(this._getAiringTodayShows) : super(AiringTodayEmpty()) {

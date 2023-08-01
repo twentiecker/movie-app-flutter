@@ -12,7 +12,7 @@ class RemoveEmpty extends RemoveShowState {}
 class RemoveError extends RemoveShowState {
   final String message;
 
-  RemoveError(this.message);
+  const RemoveError(this.message);
 
   @override
   List<Object> get props => [message];

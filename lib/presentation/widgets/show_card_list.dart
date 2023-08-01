@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class ShowCard extends StatelessWidget {
   final Show show;
 
-  ShowCard(this.show);
+  const ShowCard(this.show, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ShowCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            ShowDetailPage.ROUTE_NAME,
+            ShowDetailPage.routeName,
             arguments: show.id,
           );
         },
@@ -32,7 +32,7 @@ class ShowCard extends StatelessWidget {
                   right: 8,
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
                       show.name ?? '-',
@@ -58,7 +58,7 @@ class ShowCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${show.posterPath}',
+                  imageUrl: '$baseImageUrl${show.posterPath}',
                   width: 80,
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),

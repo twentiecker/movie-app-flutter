@@ -1,27 +1,26 @@
-import 'package:ditonton_flutter/common/state_enum.dart';
-import 'package:ditonton_flutter/presentation/provider/movies/top_rated_movies_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import '../../bloc/movies/top_rated_movies/top_rated_movies_bloc.dart';
 
 class TopRatedMoviesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/top-rated-movie';
+  static const routeName = '/top-rated-movie';
+
+  const TopRatedMoviesPage({super.key});
 
   @override
-  _TopRatedMoviesPageState createState() => _TopRatedMoviesPageState();
+  TopRatedMoviesPageState createState() => TopRatedMoviesPageState();
 }
 
-class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
+class TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<TopRatedMoviesBloc>().add(OnTopRatedMovies()));
-        // Provider.of<TopRatedMoviesNotifier>(context, listen: false)
-        //     .fetchTopRatedMovies());
+    Future.microtask(
+        () => context.read<TopRatedMoviesBloc>().add(OnTopRatedMovies()));
+    // Provider.of<TopRatedMoviesNotifier>(context, listen: false)
+    //     .fetchTopRatedMovies());
   }
 
   @override
@@ -48,7 +47,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
                 itemCount: result.length,
               );
             } else if (state is TopRatedError) {
-              return  Center(
+              return Center(
                 child: Text(state.message),
               );
             } else {

@@ -14,7 +14,7 @@ class DetailLoading extends ShowDetailState {}
 class DetailError extends ShowDetailState {
   final String message;
 
-  DetailError(this.message);
+  const DetailError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class DetailError extends ShowDetailState {
 class DetailHasData extends ShowDetailState {
   final ShowDetail result;
 
-  DetailHasData(this.result);
+  const DetailHasData(this.result);
 
   @override
   List<Object> get props => [result];

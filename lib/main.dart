@@ -23,7 +23,7 @@ import 'package:ditonton_flutter/presentation/pages/movies/home_movie_page.dart'
 import 'package:ditonton_flutter/presentation/pages/shows/home_show_page.dart';
 import 'package:ditonton_flutter/presentation/pages/movies/movie_detail_page.dart';
 import 'package:ditonton_flutter/presentation/pages/movies/popular_movies_page.dart';
-import 'package:ditonton_flutter/presentation/pages/movies/search_page.dart';
+import 'package:ditonton_flutter/presentation/pages/movies/search_movie_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/popular_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/search_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/show_detail_page.dart';
@@ -174,42 +174,48 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: kRichBlack,
           textTheme: kTextTheme,
         ),
-        home: HomeMoviePage(),
+        home: const HomeMoviePage(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
             case '/home':
-              return MaterialPageRoute(builder: (_) => HomeMoviePage());
-            case PopularMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-            case TopRatedMoviesPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
-            case MovieDetailPage.ROUTE_NAME:
+              return MaterialPageRoute(builder: (_) => const HomeMoviePage());
+            case PopularMoviesPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularMoviesPage());
+            case TopRatedMoviesPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedMoviesPage());
+            case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case SearchPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => SearchPage());
-            case AboutPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => AboutPage());
-            case HomeShowPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => HomeShowPage());
-            case PopularShowsPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => PopularShowsPage());
-            case TopRatedShowsPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => TopRatedShowsPage());
-            case ShowDetailPage.ROUTE_NAME:
+            case SearchMoviePage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const SearchMoviePage());
+            case AboutPage.routeName:
+              return MaterialPageRoute(builder: (_) => const AboutPage());
+            case HomeShowPage.routeName:
+              return MaterialPageRoute(builder: (_) => const HomeShowPage());
+            case PopularShowsPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const PopularShowsPage());
+            case TopRatedShowsPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const TopRatedShowsPage());
+            case ShowDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => ShowDetailPage(id: id),
                 settings: settings,
               );
-            case SearchShowsPage.ROUTE_NAME:
-              return CupertinoPageRoute(builder: (_) => SearchShowsPage());
-            case WatchlistPage.ROUTE_NAME:
-              return MaterialPageRoute(builder: (_) => WatchlistPage());
+            case SearchShowsPage.routeName:
+              return CupertinoPageRoute(
+                  builder: (_) => const SearchShowsPage());
+            case WatchlistPage.routeName:
+              return MaterialPageRoute(builder: (_) => const WatchlistPage());
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

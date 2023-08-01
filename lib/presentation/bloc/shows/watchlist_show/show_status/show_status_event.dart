@@ -10,7 +10,7 @@ abstract class ShowStatusEvent extends Equatable {
 class OnLoadWatchlistStatus extends ShowStatusEvent {
   final int id;
 
-  OnLoadWatchlistStatus(this.id);
+  const OnLoadWatchlistStatus(this.id);
 
   @override
   List<Object> get props => [id];

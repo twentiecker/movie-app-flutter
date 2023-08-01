@@ -2,7 +2,7 @@ import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:equatable/equatable.dart';
 
 class MovieModel extends Equatable {
-  MovieModel({
+  const MovieModel({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,

@@ -1,26 +1,25 @@
-import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:ditonton_flutter/presentation/bloc/shows/top_rated_shows/top_rated_shows_bloc.dart';
-import 'package:ditonton_flutter/presentation/provider/shows/top_rated_shows_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/show_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class TopRatedShowsPage extends StatefulWidget {
-  static const ROUTE_NAME = '/top-rated-show';
+  static const routeName = '/top-rated-show';
+
+  const TopRatedShowsPage({super.key});
 
   @override
-  _TopRatedShowsPageState createState() => _TopRatedShowsPageState();
+  TopRatedShowsPageState createState() => TopRatedShowsPageState();
 }
 
-class _TopRatedShowsPageState extends State<TopRatedShowsPage> {
+class TopRatedShowsPageState extends State<TopRatedShowsPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        context.read<TopRatedShowsBloc>().add(OnTopRatedShows()));
-        // Provider.of<TopRatedShowsNotifier>(context, listen: false)
-        //     .fetchTopRatedShows());
+    Future.microtask(
+        () => context.read<TopRatedShowsBloc>().add(OnTopRatedShows()));
+    // Provider.of<TopRatedShowsNotifier>(context, listen: false)
+    //     .fetchTopRatedShows());
   }
 
   @override
@@ -47,7 +46,7 @@ class _TopRatedShowsPageState extends State<TopRatedShowsPage> {
                 itemCount: result.length,
               );
             } else if (state is TopRatedError) {
-              return  Center(
+              return Center(
                 child: Text(state.message),
               );
             } else {

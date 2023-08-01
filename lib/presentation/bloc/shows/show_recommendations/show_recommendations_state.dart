@@ -14,7 +14,7 @@ class RecommendationsLoading extends ShowRecommendationsState {}
 class RecommendationsError extends ShowRecommendationsState {
   final String message;
 
-  RecommendationsError(this.message);
+  const RecommendationsError(this.message);
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class RecommendationsError extends ShowRecommendationsState {
 class RecommendationsHasData extends ShowRecommendationsState {
   final List<Show> result;
 
-  RecommendationsHasData(this.result);
+  const RecommendationsHasData(this.result);
 
   @override
   List<Object> get props => [result];

@@ -8,7 +8,7 @@ class ShowTable extends Equatable {
   final String? posterPath;
   final String? overview;
 
-  ShowTable({
+  const ShowTable({
     required this.id,
     required this.name,
     required this.posterPath,

@@ -8,20 +8,19 @@ import 'package:ditonton_flutter/presentation/pages/shows/popular_shows_page.dar
 import 'package:ditonton_flutter/presentation/pages/shows/search_shows_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/show_detail_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/top_rated_shows_page.dart';
-import 'package:ditonton_flutter/common/state_enum.dart';
-import 'package:ditonton_flutter/presentation/provider/shows/show_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class HomeShowPage extends StatefulWidget {
-  static const ROUTE_NAME = '/show';
+  static const routeName = '/show';
+
+  const HomeShowPage({super.key});
 
   @override
-  _HomeShowPageState createState() => _HomeShowPageState();
+  HomeShowPageState createState() => HomeShowPageState();
 }
 
-class _HomeShowPageState extends State<HomeShowPage> {
+class HomeShowPageState extends State<HomeShowPage> {
   @override
   void initState() {
     super.initState();
@@ -44,7 +43,7 @@ class _HomeShowPageState extends State<HomeShowPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchShowsPage.ROUTE_NAME);
+              Navigator.pushNamed(context, SearchShowsPage.routeName);
             },
             icon: const Icon(Icons.search),
           )
@@ -93,7 +92,7 @@ class _HomeShowPageState extends State<HomeShowPage> {
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
-                    Navigator.pushNamed(context, PopularShowsPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, PopularShowsPage.routeName),
               ),
               BlocBuilder<PopularShowsBloc, PopularShowsState>(
                 builder: (context, state) {
@@ -128,7 +127,7 @@ class _HomeShowPageState extends State<HomeShowPage> {
               _buildSubHeading(
                 title: 'Top Rated',
                 onTap: () =>
-                    Navigator.pushNamed(context, TopRatedShowsPage.ROUTE_NAME),
+                    Navigator.pushNamed(context, TopRatedShowsPage.routeName),
               ),
               BlocBuilder<TopRatedShowsBloc, TopRatedShowsState>(
                 builder: (context, state) {
@@ -192,11 +191,11 @@ class _HomeShowPageState extends State<HomeShowPage> {
 class ShowList extends StatelessWidget {
   final List<Show> shows;
 
-  ShowList(this.shows);
+  const ShowList(this.shows, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -208,14 +207,14 @@ class ShowList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  ShowDetailPage.ROUTE_NAME,
+                  ShowDetailPage.routeName,
                   arguments: show.id,
                 );
               },
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${show.posterPath}',
+                  imageUrl: '$baseImageUrl${show.posterPath}',
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),

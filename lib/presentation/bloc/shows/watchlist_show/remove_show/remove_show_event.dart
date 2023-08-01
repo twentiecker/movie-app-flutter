@@ -10,7 +10,7 @@ abstract class RemoveShowEvent extends Equatable {
 class OnRemoveFromWatchlist extends RemoveShowEvent {
   final ShowDetail show;
 
-  OnRemoveFromWatchlist(this.show);
+  const OnRemoveFromWatchlist(this.show);
 
   @override
   List<Object> get props => [show];

@@ -12,7 +12,7 @@ class StatusEmpty extends MovieStatusState {}
 class StatusHasData extends MovieStatusState {
   final bool result;
 
-  StatusHasData(this.result);
+  const StatusHasData(this.result);
 
   @override
   List<Object> get props => [result];

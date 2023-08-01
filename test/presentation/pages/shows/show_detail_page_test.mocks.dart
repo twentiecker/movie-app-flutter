@@ -158,7 +158,7 @@ class MockShowDetailNotifier extends _i1.Mock
   @override
   _i9.RequestState get showState => (super.noSuchMethod(
         Invocation.getter(#showState),
-        returnValue: _i9.RequestState.Empty,
+        returnValue: _i9.RequestState.empty,
       ) as _i9.RequestState);
   @override
   List<_i10.Show> get showRecommendations => (super.noSuchMethod(
@@ -168,7 +168,7 @@ class MockShowDetailNotifier extends _i1.Mock
   @override
   _i9.RequestState get recommendationState => (super.noSuchMethod(
         Invocation.getter(#recommendationState),
-        returnValue: _i9.RequestState.Empty,
+        returnValue: _i9.RequestState.empty,
       ) as _i9.RequestState);
   @override
   String get message => (super.noSuchMethod(

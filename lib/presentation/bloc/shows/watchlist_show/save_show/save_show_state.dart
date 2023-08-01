@@ -12,7 +12,7 @@ class SaveEmpty extends SaveShowState {}
 class SaveError extends SaveShowState {
   final String message;
 
-  SaveError(this.message);
+  const SaveError(this.message);
 
   @override
   List<Object> get props => [message];
