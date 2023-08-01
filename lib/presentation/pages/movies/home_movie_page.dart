@@ -30,10 +30,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
       context.read<PopularMoviesBloc>().add(OnPopularMovies());
       context.read<TopRatedMoviesBloc>().add(OnTopRatedMovies());
     });
-    // Provider.of<MovieListNotifier>(context, listen: false)
-    //   ..fetchNowPlayingMovies()
-    //   ..fetchPopularMovies()
-    //   ..fetchTopRatedMovies());
   }
 
   @override
@@ -111,13 +107,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   } else if (state is NowPlayingHasData) {
                     final result = state.result;
                     return MovieList(result);
-                    //   ListView.builder(
-                    //   itemBuilder: (context, index) {
-                    //     final movie = result[index];
-                    //     return MovieCard(movie);
-                    //   },
-                    //   itemCount: result.length,
-                    // );
                   } else if (state is NowPlayingError) {
                     return Center(
                       child: Text(state.message),
@@ -127,18 +116,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   }
                 },
               ),
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.nowPlayingState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.nowPlayingMovies);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
@@ -153,13 +130,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   } else if (state is PopularHasData) {
                     final result = state.result;
                     return MovieList(result);
-                    //   ListView.builder(
-                    //   itemBuilder: (context, index) {
-                    //     final movie = result[index];
-                    //     return MovieCard(movie);
-                    //   },
-                    //   itemCount: result.length,
-                    // );
                   } else if (state is PopularError) {
                     return Center(
                       child: Text(state.message),
@@ -169,18 +139,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   }
                 },
               ),
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.popularMoviesState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.popularMovies);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
               _buildSubHeading(
                 title: 'Top Rated',
                 onTap: () =>
@@ -195,13 +153,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   } else if (state is TopRatedHasData) {
                     final result = state.result;
                     return MovieList(result);
-                    //   ListView.builder(
-                    //   itemBuilder: (context, index) {
-                    //     final movie = result[index];
-                    //     return MovieCard(movie);
-                    //   },
-                    //   itemCount: result.length,
-                    // );
                   } else if (state is TopRatedError) {
                     return Center(
                       child: Text(state.message),
@@ -211,18 +162,6 @@ class HomeMoviePageState extends State<HomeMoviePage> {
                   }
                 },
               ),
-              // Consumer<MovieListNotifier>(builder: (context, data, child) {
-              //   final state = data.topRatedMoviesState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return MovieList(data.topRatedMovies);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
             ],
           ),
         ),

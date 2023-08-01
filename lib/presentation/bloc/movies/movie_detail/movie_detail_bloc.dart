@@ -10,9 +10,6 @@ part '../movie_detail/movie_detail_state.dart';
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final GetMovieDetail _getMovieDetail;
 
-  // final GetMovieRecommendations _getMovieRecommendations;
-
-  // MovieDetailBloc(this._getMovieDetail, this._getMovieRecommendations)
   MovieDetailBloc(this._getMovieDetail) : super(DetailEmpty()) {
     on<OnMovieDetail>((event, emit) async {
       final id = event.id;
@@ -29,21 +26,5 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
         },
       );
     });
-
-    // on<OnMovieRecommendations>((event, emit) async {
-    //   final id = event.id;
-    //
-    //   emit(RecommendationsLoading());
-    //   final result = await _getMovieRecommendations.execute(id);
-    //
-    //   result.fold(
-    //     (failure) {
-    //       emit(RecommendationsError(failure.message));
-    //     },
-    //     (data) {
-    //       emit(RecommendationsHasData(data));
-    //     },
-    //   );
-    // });
   }
 }

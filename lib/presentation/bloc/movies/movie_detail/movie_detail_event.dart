@@ -15,12 +15,3 @@ class OnMovieDetail extends MovieDetailEvent {
   @override
   List<Object> get props => [id];
 }
-
-// class OnMovieRecommendations extends MovieDetailEvent {
-//   final int id;
-//
-//   OnMovieRecommendations(this.id);
-//
-//   @override
-//   List<Object> get props => [id];
-// }

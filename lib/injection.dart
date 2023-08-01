@@ -295,6 +295,5 @@ Future<void> init() async {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  // locator.registerLazySingleton(() => http.Client());
   locator.registerLazySingleton<IOClient>(() => ioClient);
 }

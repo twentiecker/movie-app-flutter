@@ -24,7 +24,6 @@ class ShowRemoteDataSourceImpl implements ShowRemoteDataSource {
   static const apiKey = 'api_key=c21b7029b812a242b36580f34db559c6';
   static const baseUrl = 'https://api.themoviedb.org/3';
 
-  // final http.Client client;
   final IOClient client;
 
   ShowRemoteDataSourceImpl({required this.client});

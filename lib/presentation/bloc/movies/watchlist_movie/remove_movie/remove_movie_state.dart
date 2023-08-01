@@ -17,10 +17,3 @@ class RemoveError extends RemoveMovieState {
   @override
   List<Object> get props => [message];
 }
-
-// class RemoveHasData extends RemoveMovieState {
-//   final String result = 'Oklah sudah diremove';
-//
-//   @override
-//   List<Object> get props => [result];
-// }

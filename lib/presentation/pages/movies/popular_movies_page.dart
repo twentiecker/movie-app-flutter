@@ -18,8 +18,6 @@ class PopularMoviesPageState extends State<PopularMoviesPage> {
     super.initState();
     Future.microtask(
         () => context.read<PopularMoviesBloc>().add(OnPopularMovies()));
-    // Provider.of<PopularMoviesNotifier>(context, listen: false)
-    //     .fetchPopularMovies());
   }
 
   @override
@@ -54,28 +52,6 @@ class PopularMoviesPageState extends State<PopularMoviesPage> {
             }
           },
         ),
-        // Consumer<PopularMoviesNotifier>(
-        //   builder: (context, data, child) {
-        //     if (data.state == RequestState.Loading) {
-        //       return const Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (data.state == RequestState.Loaded) {
-        //       return ListView.builder(
-        //         itemBuilder: (context, index) {
-        //           final movie = data.movies[index];
-        //           return MovieCard(movie);
-        //         },
-        //         itemCount: data.movies.length,
-        //       );
-        //     } else {
-        //       return Center(
-        //         key: const Key('error_message'),
-        //         child: Text(data.message),
-        //       );
-        //     }
-        //   },
-        // ),
       ),
     );
   }

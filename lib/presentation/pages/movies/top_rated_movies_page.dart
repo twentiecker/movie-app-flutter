@@ -19,8 +19,6 @@ class TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
     super.initState();
     Future.microtask(
         () => context.read<TopRatedMoviesBloc>().add(OnTopRatedMovies()));
-    // Provider.of<TopRatedMoviesNotifier>(context, listen: false)
-    //     .fetchTopRatedMovies());
   }
 
   @override
@@ -55,28 +53,6 @@ class TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
             }
           },
         ),
-        // Consumer<TopRatedMoviesNotifier>(
-        //   builder: (context, data, child) {
-        //     if (data.state == RequestState.Loading) {
-        //       return const Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (data.state == RequestState.Loaded) {
-        //       return ListView.builder(
-        //         itemBuilder: (context, index) {
-        //           final movie = data.movies[index];
-        //           return MovieCard(movie);
-        //         },
-        //         itemCount: data.movies.length,
-        //       );
-        //     } else {
-        //       return Center(
-        //         key: const Key('error_message'),
-        //         child: Text(data.message),
-        //       );
-        //     }
-        //   },
-        // ),
       ),
     );
   }

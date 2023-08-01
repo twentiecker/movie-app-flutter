@@ -18,8 +18,6 @@ class TopRatedShowsPageState extends State<TopRatedShowsPage> {
     super.initState();
     Future.microtask(
         () => context.read<TopRatedShowsBloc>().add(OnTopRatedShows()));
-    // Provider.of<TopRatedShowsNotifier>(context, listen: false)
-    //     .fetchTopRatedShows());
   }
 
   @override
@@ -54,28 +52,6 @@ class TopRatedShowsPageState extends State<TopRatedShowsPage> {
             }
           },
         ),
-        // Consumer<TopRatedShowsNotifier>(
-        //   builder: (context, data, child) {
-        //     if (data.state == RequestState.Loading) {
-        //       return const Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     } else if (data.state == RequestState.Loaded) {
-        //       return ListView.builder(
-        //         itemBuilder: (context, index) {
-        //           final show = data.shows[index];
-        //           return ShowCard(show);
-        //         },
-        //         itemCount: data.shows.length,
-        //       );
-        //     } else {
-        //       return Center(
-        //         key: const Key('error_message'),
-        //         child: Text(data.message),
-        //       );
-        //     }
-        //   },
-        // ),
       ),
     );
   }

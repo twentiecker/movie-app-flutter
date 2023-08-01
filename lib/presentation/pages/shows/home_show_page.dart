@@ -29,10 +29,6 @@ class HomeShowPageState extends State<HomeShowPage> {
       context.read<PopularShowsBloc>().add(OnPopularShows());
       context.read<TopRatedShowsBloc>().add(OnTopRatedShows());
     });
-    // Future.microtask(() => Provider.of<ShowListNotifier>(context, listen: false)
-    //   ..fetchAiringTodayShows()
-    //   ..fetchPopularShows()
-    //   ..fetchTopRatedShows());
   }
 
   @override
@@ -77,18 +73,6 @@ class HomeShowPageState extends State<HomeShowPage> {
                   }
                 },
               ),
-              // Consumer<ShowListNotifier>(builder: (context, data, child) {
-              //   final state = data.airingTodayState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return ShowList(data.airingTodayShows);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
               _buildSubHeading(
                 title: 'Popular',
                 onTap: () =>
@@ -112,18 +96,6 @@ class HomeShowPageState extends State<HomeShowPage> {
                   }
                 },
               ),
-              // Consumer<ShowListNotifier>(builder: (context, data, child) {
-              //   final state = data.popularShowsState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return ShowList(data.popularShows);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
               _buildSubHeading(
                 title: 'Top Rated',
                 onTap: () =>
@@ -147,18 +119,6 @@ class HomeShowPageState extends State<HomeShowPage> {
                   }
                 },
               ),
-              // Consumer<ShowListNotifier>(builder: (context, data, child) {
-              //   final state = data.topRatedShowsState;
-              //   if (state == RequestState.Loading) {
-              //     return const Center(
-              //       child: CircularProgressIndicator(),
-              //     );
-              //   } else if (state == RequestState.Loaded) {
-              //     return ShowList(data.topRatedShows);
-              //   } else {
-              //     return const Text('Failed');
-              //   }
-              // }),
             ],
           ),
         ),

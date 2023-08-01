@@ -14,17 +14,6 @@ class RemoveMovieBloc extends Bloc<RemoveMovieEvent, RemoveMovieState> {
     on<OnRemoveFromWatchlist>((event, emit) async {
       final movie = event.movie;
       await _removeWatchlistMovie.execute(movie);
-
-      // final result = await _removeWatchlistMovie.execute(movie);
-
-      // result.fold(
-      //       (failure) {
-      //     emit(RemoveError(failure.message));
-      //   },
-      //       (data) {
-      //     emit(RemoveHasData());
-      //   },
-      // );
     });
   }
 }

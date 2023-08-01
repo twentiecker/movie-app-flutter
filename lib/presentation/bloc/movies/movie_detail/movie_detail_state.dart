@@ -28,25 +28,3 @@ class DetailHasData extends MovieDetailState {
   @override
   List<Object> get props => [result];
 }
-
-// class RecommendationsEmpty extends MovieDetailState {}
-//
-// class RecommendationsLoading extends MovieDetailState {}
-//
-// class RecommendationsError extends MovieDetailState {
-//   final String message;
-//
-//   RecommendationsError(this.message);
-//
-//   @override
-//   List<Object> get props => [message];
-// }
-//
-// class RecommendationsHasData extends MovieDetailState {
-//   final List<Movie> result;
-//
-//   RecommendationsHasData(this.result);
-//
-//   @override
-//   List<Object> get props => [result];
-// }

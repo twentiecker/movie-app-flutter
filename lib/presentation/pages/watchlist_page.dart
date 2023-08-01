@@ -24,15 +24,11 @@ class WatchlistPageState extends State<WatchlistPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    Future.microtask(() =>
-        // Provider.of<WatchlistMovieNotifier>(context, listen: false)
-        //     .fetchWatchlistMovies());
-        context.read<MovieListBloc>().add(OnGetWatchlistMovies()));
+    Future.microtask(
+        () => context.read<MovieListBloc>().add(OnGetWatchlistMovies()));
 
     Future.microtask(
         () => context.read<ShowListBloc>().add(OnGetWatchlistShows()));
-    // Provider.of<WatchlistShowNotifier>(context, listen: false)
-    //     .fetchWatchlistShows());
   }
 
   @override
@@ -43,10 +39,6 @@ class WatchlistPageState extends State<WatchlistPage>
 
   @override
   void didPopNext() {
-    // Provider.of<WatchlistMovieNotifier>(context, listen: false)
-    //     .fetchWatchlistMovies();
-    // Provider.of<WatchlistShowNotifier>(context, listen: false)
-    //     .fetchWatchlistShows();
     context.read<MovieListBloc>().add(OnGetWatchlistMovies());
     context.read<ShowListBloc>().add(OnGetWatchlistShows());
   }
@@ -112,28 +104,6 @@ class WatchlistPageState extends State<WatchlistPage>
                       }
                     },
                   ),
-                  // Consumer<WatchlistMovieNotifier>(
-                  //   builder: (context, data, child) {
-                  //     if (data.watchlistState == RequestState.Loading) {
-                  //       return const Center(
-                  //         child: CircularProgressIndicator(),
-                  //       );
-                  //     } else if (data.watchlistState == RequestState.Loaded) {
-                  //       return ListView.builder(
-                  //         itemBuilder: (context, index) {
-                  //           final movie = data.watchlistMovies[index];
-                  //           return MovieCard(movie);
-                  //         },
-                  //         itemCount: data.watchlistMovies.length,
-                  //       );
-                  //     } else {
-                  //       return Center(
-                  //         key: const Key('error_message'),
-                  //         child: Text(data.message),
-                  //       );
-                  //     }
-                  //   },
-                  // ),
                 ),
               ],
             ),
@@ -168,28 +138,6 @@ class WatchlistPageState extends State<WatchlistPage>
                       }
                     },
                   ),
-                  // Consumer<WatchlistShowNotifier>(
-                  //   builder: (context, data, child) {
-                  //     if (data.watchlistState == RequestState.Loading) {
-                  //       return const Center(
-                  //         child: CircularProgressIndicator(),
-                  //       );
-                  //     } else if (data.watchlistState == RequestState.Loaded) {
-                  //       return ListView.builder(
-                  //         itemBuilder: (context, index) {
-                  //           final show = data.watchlistShows[index];
-                  //           return ShowCard(show);
-                  //         },
-                  //         itemCount: data.watchlistShows.length,
-                  //       );
-                  //     } else {
-                  //       return Center(
-                  //         key: const Key('error_message'),
-                  //         child: Text(data.message),
-                  //       );
-                  //     }
-                  //   },
-                  // ),
                 ),
               ],
             ),

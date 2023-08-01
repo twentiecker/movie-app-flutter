@@ -32,10 +32,6 @@ class ShowDetailPageState extends State<ShowDetailPage> {
           .read<ShowRecommendationsBloc>()
           .add(OnShowRecommendations(widget.id));
       context.read<ShowStatusBloc>().add(OnLoadWatchlistStatus(widget.id));
-      // Provider.of<ShowDetailNotifier>(context, listen: false)
-      //     .fetchShowDetail(widget.id);
-      // Provider.of<ShowDetailNotifier>(context, listen: false)
-      //     .loadWatchlistStatus(widget.id);
     });
   }
 
@@ -62,26 +58,6 @@ class ShowDetailPageState extends State<ShowDetailPage> {
           }
         },
       ),
-      // Consumer<ShowDetailNotifier>(
-      //   builder: (context, provider, child) {
-      //     if (provider.showState == RequestState.Loading) {
-      //       return const Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     } else if (provider.showState == RequestState.Loaded) {
-      //       final show = provider.show;
-      //       return SafeArea(
-      //         child: DetailContent(
-      //           show,
-      //           provider.showRecommendations,
-      //           provider.isAddedToWatchlist,
-      //         ),
-      //       );
-      //     } else {
-      //       return Text(provider.message);
-      //     }
-      //   },
-      // ),
     );
   }
 }
@@ -89,10 +65,6 @@ class ShowDetailPageState extends State<ShowDetailPage> {
 class DetailContent extends StatelessWidget {
   final ShowDetail show;
 
-  // final List<Show> recommendations;
-  // final bool isAddedWatchlist;
-
-  // DetailContent(this.show, this.recommendations, this.isAddedWatchlist);
   const DetailContent(this.show, {super.key});
 
   @override
@@ -178,51 +150,6 @@ class DetailContent extends StatelessWidget {
                                 }
                               },
                             ),
-                            // ElevatedButton(
-                            //   onPressed: () async {
-                            //     if (!isAddedWatchlist) {
-                            //       await Provider.of<ShowDetailNotifier>(context,
-                            //               listen: false)
-                            //           .addWatchlist(show);
-                            //     } else {
-                            //       await Provider.of<ShowDetailNotifier>(context,
-                            //               listen: false)
-                            //           .removeFromWatchlist(show);
-                            //     }
-                            //
-                            //     final message = Provider.of<ShowDetailNotifier>(
-                            //             context,
-                            //             listen: false)
-                            //         .watchlistMessage;
-                            //
-                            //     if (message ==
-                            //             ShowDetailNotifier
-                            //                 .watchlistAddSuccessMessage ||
-                            //         message ==
-                            //             ShowDetailNotifier
-                            //                 .watchlistRemoveSuccessMessage) {
-                            //       ScaffoldMessenger.of(context).showSnackBar(
-                            //           SnackBar(content: Text(message)));
-                            //     } else {
-                            //       showDialog(
-                            //           context: context,
-                            //           builder: (context) {
-                            //             return AlertDialog(
-                            //               content: Text(message),
-                            //             );
-                            //           });
-                            //     }
-                            //   },
-                            //   child: Row(
-                            //     mainAxisSize: MainAxisSize.min,
-                            //     children: [
-                            //       isAddedWatchlist
-                            //           ? const Icon(Icons.check)
-                            //           : const Icon(Icons.add),
-                            //       const Text('Watchlist'),
-                            //     ],
-                            //   ),
-                            // ),
                             Text(
                               _showGenres(show.genres),
                             ),
@@ -311,63 +238,6 @@ class DetailContent extends StatelessWidget {
                                 }
                               },
                             ),
-                            // Consumer<ShowDetailNotifier>(
-                            //   builder: (context, data, child) {
-                            //     if (data.recommendationState ==
-                            //         RequestState.Loading) {
-                            //       return const Center(
-                            //         child: CircularProgressIndicator(),
-                            //       );
-                            //     } else if (data.recommendationState ==
-                            //         RequestState.Error) {
-                            //       return Text(data.message);
-                            //     } else if (data.recommendationState ==
-                            //         RequestState.Loaded) {
-                            //       return Container(
-                            //         height: 150,
-                            //         child: ListView.builder(
-                            //           scrollDirection: Axis.horizontal,
-                            //           itemBuilder: (context, index) {
-                            //             final show = recommendations[index];
-                            //             return Padding(
-                            //               padding: const EdgeInsets.all(4.0),
-                            //               child: InkWell(
-                            //                 onTap: () {
-                            //                   Navigator.pushReplacementNamed(
-                            //                     context,
-                            //                     ShowDetailPage.ROUTE_NAME,
-                            //                     arguments: show.id,
-                            //                   );
-                            //                 },
-                            //                 child: ClipRRect(
-                            //                   borderRadius:
-                            //                       const BorderRadius.all(
-                            //                     Radius.circular(8),
-                            //                   ),
-                            //                   child: CachedNetworkImage(
-                            //                     imageUrl:
-                            //                         'https://image.tmdb.org/t/p/w500${show.posterPath}',
-                            //                     placeholder: (context, url) =>
-                            //                         const Center(
-                            //                       child:
-                            //                           CircularProgressIndicator(),
-                            //                     ),
-                            //                     errorWidget:
-                            //                         (context, url, error) =>
-                            //                             const Icon(Icons.error),
-                            //                   ),
-                            //                 ),
-                            //               ),
-                            //             );
-                            //           },
-                            //           itemCount: recommendations.length,
-                            //         ),
-                            //       );
-                            //     } else {
-                            //       return Container();
-                            //     }
-                            //   },
-                            // ),
                           ],
                         ),
                       ),
