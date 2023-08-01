@@ -27,7 +27,7 @@ void main() {
   final tShowModel = Show(
     backdropPath: "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
     firstAirDate: "1952-12-26",
-    genreIds: [10763],
+    genreIds: const [10763],
     id: 94722,
     name: "Tagesschau",
     originalLanguage: "de",
@@ -40,7 +40,7 @@ void main() {
     voteCount: 24,
   );
   final tShowList = <Show>[tShowModel];
-  final tQuery = 'tagesschau';
+  const tQuery = 'tagesschau';
 
   blocTest<ShowSearchBloc, ShowSearchState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
@@ -49,7 +49,7 @@ void main() {
           .thenAnswer((_) async => Right(tShowList));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
@@ -64,14 +64,14 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchShows.execute(tQuery))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
-      SearchError('Server Failure'),
+      const SearchError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockSearchShows.execute(tQuery));

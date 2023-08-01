@@ -7,9 +7,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../dummy_data/shows/dummy_objects.dart';
+import '../../../dummy_data/dummy_objects.dart';
 import 'watchlist_show_notifier_test.mocks.dart';
-
 
 @GenerateMocks([GetWatchlistShows])
 void main() {
@@ -42,7 +41,7 @@ void main() {
   test('should return error when data is unsuccessful', () async {
     // arrange
     when(mockGetWatchlistShows.execute())
-        .thenAnswer((_) async => Left(DatabaseFailure("Can't get data")));
+        .thenAnswer((_) async => const Left(DatabaseFailure("Can't get data")));
     // act
     await provider.fetchWatchlistShows();
     // assert

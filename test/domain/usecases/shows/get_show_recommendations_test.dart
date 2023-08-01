@@ -15,11 +15,10 @@ void main() {
     usecase = GetShowRecommendations(mockShowRepository);
   });
 
-  final tId = 1;
+  const tId = 1;
   final tShows = <Show>[];
 
-  test('should get list of show recommendations from the repository',
-      () async {
+  test('should get list of show recommendations from the repository', () async {
     // arrange
     when(mockShowRepository.getShowRecommendations(tId))
         .thenAnswer((_) async => Right(tShows));

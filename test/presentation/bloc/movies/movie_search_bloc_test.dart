@@ -10,7 +10,6 @@ import 'package:bloc_test/bloc_test.dart';
 
 import 'movie_search_bloc_test.mocks.dart';
 
-
 @GenerateMocks([SearchMovies])
 void main() {
   late MovieSearchBloc searchBloc;
@@ -28,7 +27,7 @@ void main() {
   final tMovieModel = Movie(
     adult: false,
     backdropPath: '/muth4OYamXf41G2evdrLEg8d3om.jpg',
-    genreIds: [14, 28],
+    genreIds: const [14, 28],
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
@@ -42,7 +41,7 @@ void main() {
     voteCount: 13507,
   );
   final tMovieList = <Movie>[tMovieModel];
-  final tQuery = 'spiderman';
+  const tQuery = 'spiderman';
 
   blocTest<MovieSearchBloc, MovieSearchState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
@@ -51,7 +50,7 @@ void main() {
           .thenAnswer((_) async => Right(tMovieList));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
@@ -66,14 +65,14 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchMovies.execute(tQuery))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return searchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       SearchLoading(),
-      SearchError('Server Failure'),
+      const SearchError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockSearchMovies.execute(tQuery));

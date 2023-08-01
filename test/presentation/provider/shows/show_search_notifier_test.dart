@@ -28,20 +28,20 @@ void main() {
   final tShowModel = Show(
     backdropPath: "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
     firstAirDate: "1952-12-26",
-    genreIds: [10763],
+    genreIds: const [10763],
     id: 94722,
     name: "Tagesschau",
     originalLanguage: "de",
     originalName: "Tagesschau",
     overview:
-    "German daily news program, the oldest still existing program on German television.",
+        "German daily news program, the oldest still existing program on German television.",
     popularity: 2918.048,
     posterPath: "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
     voteAverage: 7.3,
     voteCount: 24,
   );
   final tShowList = <Show>[tShowModel];
-  final tQuery = 'tagesschau';
+  const tQuery = 'tagesschau';
 
   group('search shows', () {
     test('should change state to loading when usecase is called', () async {
@@ -70,7 +70,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockSearchShows.execute(tQuery))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchShowSearch(tQuery);
       // assert

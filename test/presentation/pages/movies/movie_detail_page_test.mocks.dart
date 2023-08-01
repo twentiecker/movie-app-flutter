@@ -57,9 +57,9 @@ class _FakeGetMovieRecommendations_1 extends _i1.SmartFake
         );
 }
 
-class _FakeGetWatchListStatus_2 extends _i1.SmartFake
+class _FakeGetWatchListMovieStatus_2 extends _i1.SmartFake
     implements _i4.GetWatchListMovieStatus {
-  _FakeGetWatchListStatus_2(
+  _FakeGetWatchListMovieStatus_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -68,8 +68,9 @@ class _FakeGetWatchListStatus_2 extends _i1.SmartFake
         );
 }
 
-class _FakeSaveWatchlist_3 extends _i1.SmartFake implements _i5.SaveWatchlistMovie {
-  _FakeSaveWatchlist_3(
+class _FakeSaveWatchlistMovie_3 extends _i1.SmartFake
+    implements _i5.SaveWatchlistMovie {
+  _FakeSaveWatchlistMovie_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -78,9 +79,9 @@ class _FakeSaveWatchlist_3 extends _i1.SmartFake implements _i5.SaveWatchlistMov
         );
 }
 
-class _FakeRemoveWatchlist_4 extends _i1.SmartFake
+class _FakeRemoveWatchlistMovie_4 extends _i1.SmartFake
     implements _i6.RemoveWatchlistMovie {
-  _FakeRemoveWatchlist_4(
+  _FakeRemoveWatchlistMovie_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -128,7 +129,7 @@ class MockMovieDetailNotifier extends _i1.Mock
   @override
   _i4.GetWatchListMovieStatus get getWatchListStatus => (super.noSuchMethod(
         Invocation.getter(#getWatchListStatus),
-        returnValue: _FakeGetWatchListStatus_2(
+        returnValue: _FakeGetWatchListMovieStatus_2(
           this,
           Invocation.getter(#getWatchListStatus),
         ),
@@ -136,7 +137,7 @@ class MockMovieDetailNotifier extends _i1.Mock
   @override
   _i5.SaveWatchlistMovie get saveWatchlist => (super.noSuchMethod(
         Invocation.getter(#saveWatchlist),
-        returnValue: _FakeSaveWatchlist_3(
+        returnValue: _FakeSaveWatchlistMovie_3(
           this,
           Invocation.getter(#saveWatchlist),
         ),
@@ -144,7 +145,7 @@ class MockMovieDetailNotifier extends _i1.Mock
   @override
   _i6.RemoveWatchlistMovie get removeWatchlist => (super.noSuchMethod(
         Invocation.getter(#removeWatchlist),
-        returnValue: _FakeRemoveWatchlist_4(
+        returnValue: _FakeRemoveWatchlistMovie_4(
           this,
           Invocation.getter(#removeWatchlist),
         ),

@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../json_reader.dart';
 
 void main() {
-  final tShowModel = ShowModel(
+  const tShowModel = ShowModel(
       backdropPath: "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
       firstAirDate: "1952-12-26",
       genreIds: [10763],
@@ -21,7 +21,7 @@ void main() {
       posterPath: "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
       voteAverage: 7.3,
       voteCount: 24);
-  final tShowResponseModel = ShowResponse(showList: <ShowModel>[tShowModel]);
+  const tShowResponseModel = ShowResponse(showList: <ShowModel>[tShowModel]);
   group('fromJson', () {
     test('should return a valid model from JSON', () async {
       // arrange

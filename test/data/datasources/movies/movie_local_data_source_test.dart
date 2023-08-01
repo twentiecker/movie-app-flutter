@@ -3,7 +3,7 @@ import 'package:ditonton_flutter/data/datasources/movies/movie_local_data_source
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../dummy_data/shows/dummy_objects.dart';
+import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
@@ -64,7 +64,7 @@ void main() {
   });
 
   group('Get Movie Detail By Id', () {
-    final tId = 1;
+    const tId = 1;
 
     test('should return Movie Detail Table when data is found', () async {
       // arrange

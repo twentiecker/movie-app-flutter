@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 
 import 'top_rated_shows_page_test.mocks.dart';
 
-
 @GenerateMocks([TopRatedShowsNotifier])
 void main() {
   late MockTopRatedShowsNotifier mockNotifier;
@@ -19,7 +18,7 @@ void main() {
     mockNotifier = MockTopRatedShowsNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<TopRatedShowsNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -35,7 +34,7 @@ void main() {
     final progressFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(_makeTestableWidget(TopRatedShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const TopRatedShowsPage()));
 
     expect(centerFinder, findsOneWidget);
     expect(progressFinder, findsOneWidget);
@@ -48,7 +47,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(_makeTestableWidget(TopRatedShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const TopRatedShowsPage()));
 
     expect(listViewFinder, findsOneWidget);
   });
@@ -58,9 +57,9 @@ void main() {
     when(mockNotifier.state).thenReturn(RequestState.error);
     when(mockNotifier.message).thenReturn('Error message');
 
-    final textFinder = find.byKey(Key('error_message'));
+    final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(_makeTestableWidget(TopRatedShowsPage()));
+    await tester.pumpWidget(makeTestableWidget(const TopRatedShowsPage()));
 
     expect(textFinder, findsOneWidget);
   });

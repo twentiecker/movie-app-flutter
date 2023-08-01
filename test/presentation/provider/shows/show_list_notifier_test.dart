@@ -37,13 +37,13 @@ void main() {
   final tShow = Show(
     backdropPath: "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
     firstAirDate: "1952-12-26",
-    genreIds: [10763],
+    genreIds: const [10763],
     id: 94722,
     name: "Tagesschau",
     originalLanguage: "de",
     originalName: "Tagesschau",
     overview:
-    "German daily news program, the oldest still existing program on German television.",
+        "German daily news program, the oldest still existing program on German television.",
     popularity: 2918.048,
     posterPath: "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
     voteAverage: 7.3,
@@ -91,7 +91,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockGetAiringTodayShows.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchAiringTodayShows();
       // assert
@@ -113,8 +113,7 @@ void main() {
       // verify(provider.setState(RequestState.Loading));
     });
 
-    test('should change shows data when data is gotten successfully',
-        () async {
+    test('should change shows data when data is gotten successfully', () async {
       // arrange
       when(mockGetPopularShows.execute())
           .thenAnswer((_) async => Right(tShowList));
@@ -129,7 +128,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockGetPopularShows.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchPopularShows();
       // assert
@@ -150,8 +149,7 @@ void main() {
       expect(provider.topRatedShowsState, RequestState.loading);
     });
 
-    test('should change shows data when data is gotten successfully',
-        () async {
+    test('should change shows data when data is gotten successfully', () async {
       // arrange
       when(mockGetTopRatedShows.execute())
           .thenAnswer((_) async => Right(tShowList));
@@ -166,7 +164,7 @@ void main() {
     test('should return error when data is unsuccessful', () async {
       // arrange
       when(mockGetTopRatedShows.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       // act
       await provider.fetchTopRatedShows();
       // assert

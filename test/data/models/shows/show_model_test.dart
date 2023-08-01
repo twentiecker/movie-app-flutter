@@ -3,7 +3,7 @@ import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final tShowModel = ShowModel(
+  const tShowModel = ShowModel(
     firstAirDate: 'firstAirDate',
     backdropPath: 'backdropPath',
     genreIds: [1, 2, 3],
@@ -21,7 +21,7 @@ void main() {
   final tShow = Show(
     backdropPath: 'backdropPath',
     firstAirDate: 'firstAirDate',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     id: 1,
     name: 'name',
     originalLanguage: 'originalLanguage',

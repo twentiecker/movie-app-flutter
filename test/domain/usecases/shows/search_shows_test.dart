@@ -6,7 +6,6 @@ import 'package:mockito/mockito.dart';
 
 import '../../../helpers/test_helper.mocks.dart';
 
-
 void main() {
   late SearchShows usecase;
   late MockShowRepository mockShowRepository;
@@ -17,7 +16,7 @@ void main() {
   });
 
   final tShows = <Show>[];
-  final tQuery = 'Tagesschau';
+  const tQuery = 'Tagesschau';
 
   test('should get list of shows from the repository', () async {
     // arrange

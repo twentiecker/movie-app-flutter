@@ -3,7 +3,7 @@ import 'package:ditonton_flutter/domain/usecases/shows/get_show_detail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../dummy_data/shows/dummy_objects.dart';
+import '../../../dummy_data/dummy_objects.dart';
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
@@ -15,7 +15,7 @@ void main() {
     usecase = GetShowDetail(mockShowRepository);
   });
 
-  final tId = 1;
+  const tId = 1;
 
   test('should get show detail from the repository', () async {
     // arrange

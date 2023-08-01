@@ -8,7 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
-import '../../../dummy_data/shows/dummy_objects.dart';
+import '../../../dummy_data/dummy_objects.dart';
 import 'show_detail_page_test.mocks.dart';
 
 @GenerateMocks([ShowDetailNotifier])
@@ -19,7 +19,7 @@ void main() {
     mockNotifier = MockShowDetailNotifier();
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return ChangeNotifierProvider<ShowDetailNotifier>.value(
       value: mockNotifier,
       child: MaterialApp(
@@ -39,7 +39,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.add);
 
-    await tester.pumpWidget(_makeTestableWidget(ShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const ShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -55,7 +55,7 @@ void main() {
 
     final watchlistButtonIcon = find.byIcon(Icons.check);
 
-    await tester.pumpWidget(_makeTestableWidget(ShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const ShowDetailPage(id: 1)));
 
     expect(watchlistButtonIcon, findsOneWidget);
   });
@@ -72,7 +72,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(ShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const ShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 
@@ -95,7 +95,7 @@ void main() {
 
     final watchlistButton = find.byType(ElevatedButton);
 
-    await tester.pumpWidget(_makeTestableWidget(ShowDetailPage(id: 1)));
+    await tester.pumpWidget(makeTestableWidget(const ShowDetailPage(id: 1)));
 
     expect(find.byIcon(Icons.add), findsOneWidget);
 

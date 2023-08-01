@@ -6,7 +6,6 @@ import 'package:ditonton_flutter/data/datasources/shows/show_remote_data_source.
 import 'package:ditonton_flutter/domain/repositories/movie_repository.dart';
 import 'package:ditonton_flutter/domain/repositories/show_repository.dart';
 import 'package:mockito/annotations.dart';
-import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
 
 @GenerateMocks([
