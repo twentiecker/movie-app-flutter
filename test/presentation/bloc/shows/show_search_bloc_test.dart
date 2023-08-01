@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ditonton_flutter/common/failure.dart';
 import 'package:ditonton_flutter/domain/entities/shows/show.dart';
 import 'package:ditonton_flutter/domain/usecases/shows/search_shows.dart';
-import 'package:ditonton_flutter/presentation/bloc/shows/show_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_search/show_search_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

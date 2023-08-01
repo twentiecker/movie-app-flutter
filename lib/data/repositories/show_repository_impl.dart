@@ -92,7 +92,7 @@ class ShowRepositoryImpl implements ShowRepository {
   }
 
   @override
-  Future<Either<Failure, String>> saveWatchlist(ShowDetail show) async {
+  Future<Either<Failure, String>> saveWatchlistShow(ShowDetail show) async {
     try {
       final result =
           await localDataSource.insertWatchlist(ShowTable.fromEntity(show));
@@ -105,7 +105,7 @@ class ShowRepositoryImpl implements ShowRepository {
   }
 
   @override
-  Future<Either<Failure, String>> removeWatchlist(ShowDetail show) async {
+  Future<Either<Failure, String>> removeWatchlistShow(ShowDetail show) async {
     try {
       final result =
           await localDataSource.removeWatchlist(ShowTable.fromEntity(show));
@@ -116,7 +116,7 @@ class ShowRepositoryImpl implements ShowRepository {
   }
 
   @override
-  Future<bool> isAddedToWatchlist(int id) async {
+  Future<bool> isAddedToWatchlistShow(int id) async {
     final result = await localDataSource.getShowById(id);
     return result != null;
   }

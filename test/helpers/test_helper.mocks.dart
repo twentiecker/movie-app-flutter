@@ -220,7 +220,7 @@ class MockMovieRepository extends _i1.Mock implements _i7.MovieRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, List<_i10.Movie>>>);
   @override
-  _i8.Future<_i2.Either<_i9.Failure, String>> saveWatchlist(
+  _i8.Future<_i2.Either<_i9.Failure, String>> saveWatchlistMovie(
           _i11.MovieDetail? movie) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -237,7 +237,7 @@ class MockMovieRepository extends _i1.Mock implements _i7.MovieRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, String>>);
   @override
-  _i8.Future<_i2.Either<_i9.Failure, String>> removeWatchlist(
+  _i8.Future<_i2.Either<_i9.Failure, String>> removeWatchlistMovie(
           _i11.MovieDetail? movie) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -254,7 +254,7 @@ class MockMovieRepository extends _i1.Mock implements _i7.MovieRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, String>>);
   @override
-  _i8.Future<bool> isAddedToWatchlist(int? id) => (super.noSuchMethod(
+  _i8.Future<bool> isAddedToWatchlistMovie(int? id) => (super.noSuchMethod(
         Invocation.method(
           #isAddedToWatchlist,
           [id],
@@ -596,7 +596,7 @@ class MockShowRepository extends _i1.Mock implements _i19.ShowRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, List<_i20.Show>>>);
   @override
-  _i8.Future<_i2.Either<_i9.Failure, String>> saveWatchlist(
+  _i8.Future<_i2.Either<_i9.Failure, String>> saveWatchlistShow(
           _i21.ShowDetail? show) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -613,7 +613,7 @@ class MockShowRepository extends _i1.Mock implements _i19.ShowRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, String>>);
   @override
-  _i8.Future<_i2.Either<_i9.Failure, String>> removeWatchlist(
+  _i8.Future<_i2.Either<_i9.Failure, String>> removeWatchlistShow(
           _i21.ShowDetail? show) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -630,7 +630,7 @@ class MockShowRepository extends _i1.Mock implements _i19.ShowRepository {
         )),
       ) as _i8.Future<_i2.Either<_i9.Failure, String>>);
   @override
-  _i8.Future<bool> isAddedToWatchlist(int? id) => (super.noSuchMethod(
+  _i8.Future<bool> isAddedToWatchlistShow(int? id) => (super.noSuchMethod(
         Invocation.method(
           #isAddedToWatchlist,
           [id],

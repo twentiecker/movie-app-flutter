@@ -1,6 +1,6 @@
 import 'package:ditonton_flutter/common/constants.dart';
 import 'package:ditonton_flutter/common/state_enum.dart';
-import 'package:ditonton_flutter/presentation/bloc/movies/movie_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_search/movie_search_bloc.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_search_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/movie_card_list.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

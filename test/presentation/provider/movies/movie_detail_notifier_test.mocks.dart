@@ -16,11 +16,11 @@ import 'package:ditonton_flutter/domain/usecases/movies/get_movie_detail.dart'
     as _i4;
 import 'package:ditonton_flutter/domain/usecases/movies/get_movie_recommendations.dart'
     as _i8;
-import 'package:ditonton_flutter/domain/usecases/movies/get_watchlist_status.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/get_watchlist_movie_status.dart'
     as _i10;
-import 'package:ditonton_flutter/domain/usecases/movies/remove_watchlist.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/remove_watchlist_movie.dart'
     as _i12;
-import 'package:ditonton_flutter/domain/usecases/movies/save_watchlist.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/save_watchlist_movie.dart'
     as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -129,7 +129,7 @@ class MockGetMovieRecommendations extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetWatchListStatus extends _i1.Mock
-    implements _i10.GetWatchListStatus {
+    implements _i10.GetWatchListMovieStatus {
   MockGetWatchListStatus() {
     _i1.throwOnMissingStub(this);
   }
@@ -155,7 +155,7 @@ class MockGetWatchListStatus extends _i1.Mock
 /// A class which mocks [SaveWatchlist].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSaveWatchlist extends _i1.Mock implements _i11.SaveWatchlist {
+class MockSaveWatchlist extends _i1.Mock implements _i11.SaveWatchlistMovie {
   MockSaveWatchlist() {
     _i1.throwOnMissingStub(this);
   }
@@ -189,7 +189,7 @@ class MockSaveWatchlist extends _i1.Mock implements _i11.SaveWatchlist {
 /// A class which mocks [RemoveWatchlist].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRemoveWatchlist extends _i1.Mock implements _i12.RemoveWatchlist {
+class MockRemoveWatchlist extends _i1.Mock implements _i12.RemoveWatchlistMovie {
   MockRemoveWatchlist() {
     _i1.throwOnMissingStub(this);
   }

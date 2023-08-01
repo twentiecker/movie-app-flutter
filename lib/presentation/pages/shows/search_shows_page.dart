@@ -1,6 +1,6 @@
 import 'package:ditonton_flutter/common/constants.dart';
 import 'package:ditonton_flutter/common/state_enum.dart';
-import 'package:ditonton_flutter/presentation/bloc/shows/show_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_search/show_search_bloc.dart';
 import 'package:ditonton_flutter/presentation/provider/shows/show_search_notifier.dart';
 import 'package:ditonton_flutter/presentation/widgets/show_card_list.dart';
 import 'package:flutter/material.dart';

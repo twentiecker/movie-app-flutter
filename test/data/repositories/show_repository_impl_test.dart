@@ -342,7 +342,7 @@ void main() {
       when(mockLocalDataSource.insertWatchlist(testShowTable))
           .thenAnswer((_) async => 'Added to Watchlist');
       // act
-      final result = await repository.saveWatchlist(testShowDetail);
+      final result = await repository.saveWatchlistShow(testShowDetail);
       // assert
       expect(result, Right('Added to Watchlist'));
     });
@@ -352,7 +352,7 @@ void main() {
       when(mockLocalDataSource.insertWatchlist(testShowTable))
           .thenThrow(DatabaseException('Failed to add watchlist'));
       // act
-      final result = await repository.saveWatchlist(testShowDetail);
+      final result = await repository.saveWatchlistShow(testShowDetail);
       // assert
       expect(result, Left(DatabaseFailure('Failed to add watchlist')));
     });
@@ -364,7 +364,7 @@ void main() {
       when(mockLocalDataSource.removeWatchlist(testShowTable))
           .thenAnswer((_) async => 'Removed from watchlist');
       // act
-      final result = await repository.removeWatchlist(testShowDetail);
+      final result = await repository.removeWatchlistShow(testShowDetail);
       // assert
       expect(result, Right('Removed from watchlist'));
     });
@@ -374,7 +374,7 @@ void main() {
       when(mockLocalDataSource.removeWatchlist(testShowTable))
           .thenThrow(DatabaseException('Failed to remove watchlist'));
       // act
-      final result = await repository.removeWatchlist(testShowDetail);
+      final result = await repository.removeWatchlistShow(testShowDetail);
       // assert
       expect(result, Left(DatabaseFailure('Failed to remove watchlist')));
     });
@@ -386,7 +386,7 @@ void main() {
       final tId = 1;
       when(mockLocalDataSource.getShowById(tId)).thenAnswer((_) async => null);
       // act
-      final result = await repository.isAddedToWatchlist(tId);
+      final result = await repository.isAddedToWatchlistShow(tId);
       // assert
       expect(result, false);
     });

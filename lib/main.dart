@@ -1,5 +1,23 @@
-import 'package:ditonton_flutter/presentation/bloc/movies/movie_search_bloc.dart';
-import 'package:ditonton_flutter/presentation/bloc/shows/show_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_detail/movie_detail_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_recommendations/movie_recommendations_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_search/movie_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/now_playing_movies/now_playing_movies_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/popular_movies/popular_movies_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/top_rated_movies/top_rated_movies_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/movie_list/movie_list_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/remove_movie/remove_movie_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/save_movie/save_movie_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/airing_today_shows/airing_today_shows_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/popular_shows/popular_shows_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_detail/show_detail_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_recommendations/show_recommendations_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/show_search/show_search_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/movie_status/movie_status_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/top_rated_shows/top_rated_shows_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/remove_show/remove_show_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/save_show/save_show_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/show_list/show_list_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/shows/watchlist_show/show_status/show_status_bloc.dart';
 import 'package:ditonton_flutter/presentation/pages/about_page.dart';
 import 'package:ditonton_flutter/presentation/pages/movies/home_movie_page.dart';
 import 'package:ditonton_flutter/presentation/pages/shows/home_show_page.dart';
@@ -91,7 +109,61 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<MovieSearchBloc>(),
         ),
         BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieRecommendationsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<NowPlayingMoviesBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<PopularMoviesBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedMoviesBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SaveMovieBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<RemoveMovieBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieStatusBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<MovieListBloc>(),
+        ),
+        BlocProvider(
           create: (_) => di.locator<ShowSearchBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ShowDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ShowRecommendationsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<AiringTodayShowsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<PopularShowsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedShowsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<SaveShowBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<RemoveShowBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ShowStatusBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<ShowListBloc>(),
         ),
       ],
       child: MaterialApp(

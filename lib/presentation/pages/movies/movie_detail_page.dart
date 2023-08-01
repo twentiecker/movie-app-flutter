@@ -3,9 +3,15 @@ import 'package:ditonton_flutter/common/constants.dart';
 import 'package:ditonton_flutter/domain/entities/genre.dart';
 import 'package:ditonton_flutter/domain/entities/movies/movie.dart';
 import 'package:ditonton_flutter/domain/entities/movies/movie_detail.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_detail/movie_detail_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/movie_recommendations/movie_recommendations_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/movie_status/movie_status_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/remove_movie/remove_movie_bloc.dart';
+import 'package:ditonton_flutter/presentation/bloc/movies/watchlist_movie/save_movie/save_movie_bloc.dart';
 import 'package:ditonton_flutter/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton_flutter/common/state_enum.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -25,46 +31,77 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<MovieDetailNotifier>(context, listen: false)
-          .fetchMovieDetail(widget.id);
-      Provider.of<MovieDetailNotifier>(context, listen: false)
-          .loadWatchlistStatus(widget.id);
+      context.read<MovieDetailBloc>().add(OnMovieDetail(widget.id));
+      context.read<MovieRecommendationsBloc>().add(OnMovieRecommendations(widget.id));
+      context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(widget.id));
+      // Provider.of<MovieDetailNotifier>(context, listen: false)
+      //     .fetchMovieDetail(widget.id);
+      // Provider.of<MovieDetailNotifier>(context, listen: false)
+      //     .loadWatchlistStatus(widget.id);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<MovieDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.movieState == RequestState.Loading) {
+      body: BlocBuilder<MovieDetailBloc, MovieDetailState>(
+        builder: (context, state) {
+          if (state is DetailLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (provider.movieState == RequestState.Loaded) {
-            final movie = provider.movie;
+          } else if (state is DetailHasData) {
+            final result = state.result;
             return SafeArea(
-              child: DetailContent(
-                movie,
-                provider.movieRecommendations,
-                provider.isAddedToWatchlist,
-              ),
+              child: DetailContent(result),
+            );
+            //   ListView.builder(
+            //   itemBuilder: (context, index) {
+            //     final movie = result[index];
+            //     return MovieCard(movie);
+            //   },
+            //   itemCount: result.length,
+            // );
+          } else if (state is DetailError) {
+            return Center(
+              child: Text(state.message),
             );
           } else {
-            return Text(provider.message);
+            return Container();
           }
         },
       ),
+      // Consumer<MovieDetailNotifier>(
+      //   builder: (context, provider, child) {
+      //     if (provider.movieState == RequestState.Loading) {
+      //       return const Center(
+      //         child: CircularProgressIndicator(),
+      //       );
+      //     } else if (provider.movieState == RequestState.Loaded) {
+      //       final movie = provider.movie;
+      //       return SafeArea(
+      //         child: DetailContent(
+      //           movie,
+      //           provider.movieRecommendations,
+      //           provider.isAddedToWatchlist,
+      //         ),
+      //       );
+      //     } else {
+      //       return Text(provider.message);
+      //     }
+      //   },
+      // ),
     );
   }
 }
 
 class DetailContent extends StatelessWidget {
   final MovieDetail movie;
-  final List<Movie> recommendations;
-  final bool isAddedWatchlist;
+  // final List<Movie> recommendations;
+  // final bool isAddedWatchlist;
 
-  DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
+  // DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
+  DetailContent(this.movie);
 
   @override
   Widget build(BuildContext context) {
@@ -106,53 +143,124 @@ class DetailContent extends StatelessWidget {
                               movie.title,
                               style: kHeading5,
                             ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (!isAddedWatchlist) {
-                                  await Provider.of<MovieDetailNotifier>(
-                                          context,
-                                          listen: false)
-                                      .addWatchlist(movie);
-                                } else {
-                                  await Provider.of<MovieDetailNotifier>(
-                                          context,
-                                          listen: false)
-                                      .removeFromWatchlist(movie);
-                                }
+                            BlocBuilder<MovieStatusBloc, MovieStatusState>(
+                              builder: (context, state) {
+                                if (state is StatusHasData) {
+                                  final result = state.result;
+                                  return ElevatedButton(
+                                    onPressed: () async {
+                                      if (!result) {
+                                        // await Provider.of<MovieDetailNotifier>(
+                                        //     context,
+                                        //     listen: false)
+                                        //     .addWatchlist(movie);
+                                        context.read<SaveMovieBloc>().add(OnSaveFromWatchlist(movie));
+                                        context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(movie.id));
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text('Added to Watchlist')));
+                                      } else {
+                                        // await Provider.of<MovieDetailNotifier>(
+                                        //     context,
+                                        //     listen: false)
+                                        //     .removeFromWatchlist(movie);
+                                        context.read<RemoveMovieBloc>().add(OnRemoveFromWatchlist(movie));
+                                        context.read<MovieStatusBloc>().add(OnLoadWatchlistStatus(movie.id));
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text('Removed from Watchlist')));
+                                      }
 
-                                final message =
-                                    Provider.of<MovieDetailNotifier>(context,
-                                            listen: false)
-                                        .watchlistMessage;
+                                      // final message =
+                                      //     Provider.of<MovieDetailNotifier>(context,
+                                      //         listen: false)
+                                      //         .watchlistMessage;
 
-                                if (message ==
-                                        MovieDetailNotifier
-                                            .watchlistAddSuccessMessage ||
-                                    message ==
-                                        MovieDetailNotifier
-                                            .watchlistRemoveSuccessMessage) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text(message)));
+                                      // if (message ==
+                                      //     MovieDetailNotifier
+                                      //         .watchlistAddSuccessMessage ||
+                                      //     message ==
+                                      //         MovieDetailNotifier
+                                      //             .watchlistRemoveSuccessMessage) {
+                                      //   ScaffoldMessenger.of(context).showSnackBar(
+                                      //       SnackBar(content: Text(message)));
+                                      // } else {
+                                      //   showDialog(
+                                      //       context: context,
+                                      //       builder: (context) {
+                                      //         return AlertDialog(
+                                      //           content: Text(message),
+                                      //         );
+                                      //       });
+                                      // }
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        result
+                                            ? const Icon(Icons.check)
+                                            : const Icon(Icons.add),
+                                        const Text('Watchlist'),
+                                      ],
+                                    ),
+                                  );
+                                  //   ListView.builder(
+                                  //   itemBuilder: (context, index) {
+                                  //     final movie = result[index];
+                                  //     return MovieCard(movie);
+                                  //   },
+                                  //   itemCount: result.length,
+                                  // );
                                 } else {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          content: Text(message),
-                                        );
-                                      });
+                                  return Container();
                                 }
                               },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  isAddedWatchlist
-                                      ? const Icon(Icons.check)
-                                      : const Icon(Icons.add),
-                                  const Text('Watchlist'),
-                                ],
-                              ),
                             ),
+                            // ElevatedButton(
+                            //   onPressed: () async {
+                            //     if (!isAddedWatchlist) {
+                            //       await Provider.of<MovieDetailNotifier>(
+                            //               context,
+                            //               listen: false)
+                            //           .addWatchlist(movie);
+                            //     } else {
+                            //       await Provider.of<MovieDetailNotifier>(
+                            //               context,
+                            //               listen: false)
+                            //           .removeFromWatchlist(movie);
+                            //     }
+                            //
+                            //     final message =
+                            //         Provider.of<MovieDetailNotifier>(context,
+                            //                 listen: false)
+                            //             .watchlistMessage;
+                            //
+                            //     if (message ==
+                            //             MovieDetailNotifier
+                            //                 .watchlistAddSuccessMessage ||
+                            //         message ==
+                            //             MovieDetailNotifier
+                            //                 .watchlistRemoveSuccessMessage) {
+                            //       ScaffoldMessenger.of(context).showSnackBar(
+                            //           SnackBar(content: Text(message)));
+                            //     } else {
+                            //       showDialog(
+                            //           context: context,
+                            //           builder: (context) {
+                            //             return AlertDialog(
+                            //               content: Text(message),
+                            //             );
+                            //           });
+                            //     }
+                            //   },
+                            //   child: Row(
+                            //     mainAxisSize: MainAxisSize.min,
+                            //     children: [
+                            //       isAddedWatchlist
+                            //           ? const Icon(Icons.check)
+                            //           : const Icon(Icons.add),
+                            //       const Text('Watchlist'),
+                            //     ],
+                            //   ),
+                            // ),
                             Text(
                               _showGenres(movie.genres),
                             ),
@@ -186,24 +294,20 @@ class DetailContent extends StatelessWidget {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            Consumer<MovieDetailNotifier>(
-                              builder: (context, data, child) {
-                                if (data.recommendationState ==
-                                    RequestState.Loading) {
+                            BlocBuilder<MovieRecommendationsBloc, MovieRecommendationsState>(
+                              builder: (context, state) {
+                                if (state is RecommendationsLoading) {
                                   return const Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                } else if (data.recommendationState ==
-                                    RequestState.Error) {
-                                  return Text(data.message);
-                                } else if (data.recommendationState ==
-                                    RequestState.Loaded) {
+                                } else if (state is RecommendationsHasData) {
+                                  final result = state.result;
                                   return Container(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                        final movie = recommendations[index];
+                                        final movie = result[index];
                                         return Padding(
                                           padding: const EdgeInsets.all(4.0),
                                           child: InkWell(
@@ -216,33 +320,101 @@ class DetailContent extends StatelessWidget {
                                             },
                                             child: ClipRRect(
                                               borderRadius:
-                                                  const BorderRadius.all(
+                                              const BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                                'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                                                 placeholder: (context, url) =>
-                                                    const Center(
+                                                const Center(
                                                   child:
-                                                      CircularProgressIndicator(),
+                                                  CircularProgressIndicator(),
                                                 ),
                                                 errorWidget:
                                                     (context, url, error) =>
-                                                        const Icon(Icons.error),
+                                                const Icon(Icons.error),
                                               ),
                                             ),
                                           ),
                                         );
                                       },
-                                      itemCount: recommendations.length,
+                                      itemCount: result.length,
                                     ),
+                                  );
+                                  //   ListView.builder(
+                                  //   itemBuilder: (context, index) {
+                                  //     final movie = result[index];
+                                  //     return MovieCard(movie);
+                                  //   },
+                                  //   itemCount: result.length,
+                                  // );
+                                } else if (state is RecommendationsError) {
+                                  return Center(
+                                    child: Text(state.message),
                                   );
                                 } else {
                                   return Container();
                                 }
                               },
                             ),
+                            // Consumer<MovieDetailNotifier>(
+                            //   builder: (context, data, child) {
+                            //     if (data.recommendationState ==
+                            //         RequestState.Loading) {
+                            //       return const Center(
+                            //         child: CircularProgressIndicator(),
+                            //       );
+                            //     } else if (data.recommendationState ==
+                            //         RequestState.Error) {
+                            //       return Text(data.message);
+                            //     } else if (data.recommendationState ==
+                            //         RequestState.Loaded) {
+                            //       return Container(
+                            //         height: 150,
+                            //         child: ListView.builder(
+                            //           scrollDirection: Axis.horizontal,
+                            //           itemBuilder: (context, index) {
+                            //             final movie = recommendations[index];
+                            //             return Padding(
+                            //               padding: const EdgeInsets.all(4.0),
+                            //               child: InkWell(
+                            //                 onTap: () {
+                            //                   Navigator.pushReplacementNamed(
+                            //                     context,
+                            //                     MovieDetailPage.ROUTE_NAME,
+                            //                     arguments: movie.id,
+                            //                   );
+                            //                 },
+                            //                 child: ClipRRect(
+                            //                   borderRadius:
+                            //                       const BorderRadius.all(
+                            //                     Radius.circular(8),
+                            //                   ),
+                            //                   child: CachedNetworkImage(
+                            //                     imageUrl:
+                            //                         'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                            //                     placeholder: (context, url) =>
+                            //                         const Center(
+                            //                       child:
+                            //                           CircularProgressIndicator(),
+                            //                     ),
+                            //                     errorWidget:
+                            //                         (context, url, error) =>
+                            //                             const Icon(Icons.error),
+                            //                   ),
+                            //                 ),
+                            //               ),
+                            //             );
+                            //           },
+                            //           itemCount: recommendations.length,
+                            //         ),
+                            //       );
+                            //     } else {
+                            //       return Container();
+                            //     }
+                            //   },
+                            // ),
                           ],
                         ),
                       ),

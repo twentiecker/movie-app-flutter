@@ -17,12 +17,12 @@ void main() {
 
   test('should save show to the repository', () async {
     // arrange
-    when(mockShowRepository.saveWatchlist(testShowDetail))
+    when(mockShowRepository.saveWatchlistShow(testShowDetail))
         .thenAnswer((_) async => Right('Added to Watchlist'));
     // act
     final result = await usecase.execute(testShowDetail);
     // assert
-    verify(mockShowRepository.saveWatchlist(testShowDetail));
+    verify(mockShowRepository.saveWatchlistShow(testShowDetail));
     expect(result, Right('Added to Watchlist'));
   });
 }

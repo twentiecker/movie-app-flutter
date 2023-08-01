@@ -3,12 +3,12 @@ import 'package:ditonton_flutter/common/failure.dart';
 import 'package:ditonton_flutter/domain/entities/movies/movie_detail.dart';
 import 'package:ditonton_flutter/domain/repositories/movie_repository.dart';
 
-class RemoveWatchlist {
+class SaveWatchlistMovie {
   final MovieRepository repository;
 
-  RemoveWatchlist(this.repository);
+  SaveWatchlistMovie(this.repository);
 
   Future<Either<Failure, String>> execute(MovieDetail movie) {
-    return repository.removeWatchlist(movie);
+    return repository.saveWatchlistMovie(movie);
   }
 }

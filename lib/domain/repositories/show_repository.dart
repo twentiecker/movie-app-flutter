@@ -16,11 +16,11 @@ abstract class ShowRepository {
 
   Future<Either<Failure, List<Show>>> searchShows(String query);
 
-  Future<Either<Failure, String>> saveWatchlist(ShowDetail show);
+  Future<Either<Failure, String>> saveWatchlistShow(ShowDetail show);
 
-  Future<Either<Failure, String>> removeWatchlist(ShowDetail show);
+  Future<Either<Failure, String>> removeWatchlistShow(ShowDetail show);
 
-  Future<bool> isAddedToWatchlist(int id);
+  Future<bool> isAddedToWatchlistShow(int id);
 
   Future<Either<Failure, List<Show>>> getWatchlistShows();
 }

@@ -14,11 +14,11 @@ import 'package:ditonton_flutter/domain/usecases/movies/get_movie_detail.dart'
     as _i2;
 import 'package:ditonton_flutter/domain/usecases/movies/get_movie_recommendations.dart'
     as _i3;
-import 'package:ditonton_flutter/domain/usecases/movies/get_watchlist_status.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/get_watchlist_movie_status.dart'
     as _i4;
-import 'package:ditonton_flutter/domain/usecases/movies/remove_watchlist.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/remove_watchlist_movie.dart'
     as _i6;
-import 'package:ditonton_flutter/domain/usecases/movies/save_watchlist.dart'
+import 'package:ditonton_flutter/domain/usecases/movies/save_watchlist_movie.dart'
     as _i5;
 import 'package:ditonton_flutter/presentation/provider/movies/movie_detail_notifier.dart'
     as _i8;
@@ -58,7 +58,7 @@ class _FakeGetMovieRecommendations_1 extends _i1.SmartFake
 }
 
 class _FakeGetWatchListStatus_2 extends _i1.SmartFake
-    implements _i4.GetWatchListStatus {
+    implements _i4.GetWatchListMovieStatus {
   _FakeGetWatchListStatus_2(
     Object parent,
     Invocation parentInvocation,
@@ -68,7 +68,7 @@ class _FakeGetWatchListStatus_2 extends _i1.SmartFake
         );
 }
 
-class _FakeSaveWatchlist_3 extends _i1.SmartFake implements _i5.SaveWatchlist {
+class _FakeSaveWatchlist_3 extends _i1.SmartFake implements _i5.SaveWatchlistMovie {
   _FakeSaveWatchlist_3(
     Object parent,
     Invocation parentInvocation,
@@ -79,7 +79,7 @@ class _FakeSaveWatchlist_3 extends _i1.SmartFake implements _i5.SaveWatchlist {
 }
 
 class _FakeRemoveWatchlist_4 extends _i1.SmartFake
-    implements _i6.RemoveWatchlist {
+    implements _i6.RemoveWatchlistMovie {
   _FakeRemoveWatchlist_4(
     Object parent,
     Invocation parentInvocation,
@@ -126,29 +126,29 @@ class MockMovieDetailNotifier extends _i1.Mock
         ),
       ) as _i3.GetMovieRecommendations);
   @override
-  _i4.GetWatchListStatus get getWatchListStatus => (super.noSuchMethod(
+  _i4.GetWatchListMovieStatus get getWatchListStatus => (super.noSuchMethod(
         Invocation.getter(#getWatchListStatus),
         returnValue: _FakeGetWatchListStatus_2(
           this,
           Invocation.getter(#getWatchListStatus),
         ),
-      ) as _i4.GetWatchListStatus);
+      ) as _i4.GetWatchListMovieStatus);
   @override
-  _i5.SaveWatchlist get saveWatchlist => (super.noSuchMethod(
+  _i5.SaveWatchlistMovie get saveWatchlist => (super.noSuchMethod(
         Invocation.getter(#saveWatchlist),
         returnValue: _FakeSaveWatchlist_3(
           this,
           Invocation.getter(#saveWatchlist),
         ),
-      ) as _i5.SaveWatchlist);
+      ) as _i5.SaveWatchlistMovie);
   @override
-  _i6.RemoveWatchlist get removeWatchlist => (super.noSuchMethod(
+  _i6.RemoveWatchlistMovie get removeWatchlist => (super.noSuchMethod(
         Invocation.getter(#removeWatchlist),
         returnValue: _FakeRemoveWatchlist_4(
           this,
           Invocation.getter(#removeWatchlist),
         ),
-      ) as _i6.RemoveWatchlist);
+      ) as _i6.RemoveWatchlistMovie);
   @override
   _i7.MovieDetail get movie => (super.noSuchMethod(
         Invocation.getter(#movie),
